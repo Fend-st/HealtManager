@@ -1,0 +1,19 @@
+com.example.healthmanager
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id boton1_temporizador
+id lista1_temporizador
+id main
+id texto1_main
+id texto1_temporizador
+layout activity_main
+layout activity_temporizador
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base_Theme_HealthManager
+style Theme_HealthManager
+xml backup_rules
+xml data_extraction_rules
