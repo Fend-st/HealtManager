@@ -26,8 +26,11 @@ public class MainActivity extends AppCompatActivity {
         //Instanciamos la BD:
         gbd = new GestorBD(this);
 
-        //Llamamos al metodo de prueba:
+        //LLAMAMOS A LOS MÉTODOS DE PRUEBA:
         gbd.consultarUsuario();
+        gbd.consultarEvento();
+        gbd.consultarDia();
+
 
 
 

@@ -43,7 +43,7 @@ public class GestorBD extends SQLiteOpenHelper {
     public static final String DIA_EMOCION = "emocion";
     public static final String DIA_ID_EVENTO = "id_evento";
 
-    //Creacion de la Base de Datos
+    //Creación de la Base de Datos
     public GestorBD(@Nullable Context context) {
         super(context, NOMBRE_BD, null, VERSION);
 
@@ -82,33 +82,71 @@ public class GestorBD extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        //Este codigo SOLO se ejecuta si aumenta la version de la BD!
+        //Este código SOLO se ejecuta si aumenta la version de la BD!
 
         //Activamos las Foreign Keys:
         db.execSQL("PRAGMA foreign_keys = ON");
     }
 
 
-    //Metodo de prueba para mostrar por consola los datos de prueba:
+    //MÉTODOS DE PRUEBA PARA MOSTRAR POR CONSOLA LOS DATOS DE PRUEBA:
     public void consultarUsuario(){
-
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cur = db.rawQuery("SELECT * FROM " + TABLA_USUARIO, null);
 
         if (cur.moveToFirst()) {
-            //Recorremos el cursor hasta que no haya más registros
+            //Recorremos el cursor hasta que no haya más registros y mostramos los datos por consola
             while (!cur.isAfterLast()) {
-                Log.d("GestorBD", cur.getInt(0) + " - " + cur.getString(1) + " - "
-                                + cur.getInt(2) + " - " + cur.getString(3) + " - "
-                                + cur.getFloat(4) + " - " + cur.getFloat(5) + " - "
-                                + cur.getString(6));
+                Log.d("GestorBD", "CONSULTA USUARIO DE PRUEBA: \n-ID: " + cur.getInt(0)
+                        + "\n-Nombre: " + cur.getString(1)
+                        + "\n-Edad: " + cur.getInt(2)
+                        + "\n-Sexo: " + cur.getString(3)
+                        + "\n-Altura: " + cur.getFloat(4)
+                        + "\n-Peso: " + cur.getFloat(5)
+                        + "\n-Tipo de Sangre: " + cur.getString(6));
 
                 cur.moveToNext();
             }
         }
         cur.close();
         db.close();
+    }
+    public void consultarEvento(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cur = db.rawQuery("SELECT * FROM " + TABLA_EVENTO, null);
 
+        if (cur.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros y mostramos los datos por consola
+            while (!cur.isAfterLast()) {
+                Log.d("GestorBD", "CONSULTA EVENTO DE PRUEBA: \n-ID: " + cur.getInt(0)
+                        + "\n-Nombre: " + cur.getString(1)
+                        + "\n-Descripcion: " + cur.getString(2)
+                        + "\n-Se Repite: " + cur.getInt(3)
+                        + "\n-ID Usuario: " + cur.getInt(4));
+
+                cur.moveToNext();
+            }
+        }
+        cur.close();
+        db.close();
+    }
+    public void consultarDia(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cur = db.rawQuery("SELECT * FROM " + TABLA_DIA, null);
+
+        if (cur.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros y mostramos los datos por consola
+            while (!cur.isAfterLast()) {
+                Log.d("GestorBD", "CONSULTA DIA DE PRUEBA: \n-ID: " + cur.getInt(0)
+                        + "\n-Fecha: " + cur.getString(1)
+                        + "\n-Emocion: " + cur.getString(2)
+                        + "\n-ID Evento: " + cur.getInt(3));
+
+                cur.moveToNext();
+            }
+        }
+        cur.close();
+        db.close();
     }
 
 }
