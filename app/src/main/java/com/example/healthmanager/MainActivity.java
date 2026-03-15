@@ -1,9 +1,8 @@
 package com.example.healthmanager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,15 +22,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        //Esperar 5 segundos y saltar a MainActivity.
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(MainActivity.this, TemporizadorActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, 5000);
+    }
+    @Override //Método para crear el menú. Falta hacer el evento onClick en el item para que vaya a la actividad correspondiente.
+    public boolean onCreateOptionsMenu (Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
     }
 }

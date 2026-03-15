@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:2:1-28:12
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:2:1-38:12
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\Usuario\.gradle\caches\9.3.1\transforms\6c432118b89a05cf5fee309ac9a66b92\workspace\transformed\material-1.13.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\Usuario\.gradle\caches\9.3.1\transforms\777e0eed3c1a0ae5bab0a3de98bae8bb\workspace\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] C:\Users\Usuario\.gradle\caches\9.3.1\transforms\2664d8168d7376280258d5d341710ba6\workspace\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:2:1-7:12
@@ -56,8 +56,8 @@ MERGED from [androidx.compose.runtime:runtime-annotation-android:1.9.0] C:\Users
 	xmlns:android
 		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:5:5-26:19
-INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:5:5-26:19
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:5:5-36:19
+INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:5:5-36:19
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\Usuario\.gradle\caches\9.3.1\transforms\6c432118b89a05cf5fee309ac9a66b92\workspace\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\Usuario\.gradle\caches\9.3.1\transforms\6c432118b89a05cf5fee309ac9a66b92\workspace\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\Usuario\.gradle\caches\9.3.1\transforms\777e0eed3c1a0ae5bab0a3de98bae8bb\workspace\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -94,28 +94,46 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Usuario\.gradle\ca
 		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:13:9-51
 	android:dataExtractionRules
 		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:7:9-65
-activity#com.example.healthmanager.TemporizadorActivity
-ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:14:9-16:40
+activity#com.example.healthmanager.PerfilUsuarioActivity
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:14:9-22:20
 	android:exported
-		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:16:13-37
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:16:13-36
 	android:name
-		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:15:13-49
-activity#com.example.healthmanager.MainActivity
-ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:17:9-25:20
-	android:exported
-		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:19:13-36
-	android:name
-		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:18:13-41
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:15:13-50
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:20:13-24:29
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:17:13-21:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:18:17-69
 	android:name
-		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:18:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:23:17-77
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:20:17-77
 	android:name
-		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:23:27-74
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:20:27-74
+activity#com.example.healthmanager.CalendarioActivity
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:23:9-25:40
+	android:exported
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:24:13-47
+activity#com.example.healthmanager.ResumenActividadActivity
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:26:9-28:40
+	android:exported
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:27:13-53
+activity#com.example.healthmanager.TemporizadorActivity
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:29:9-31:40
+	android:exported
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:30:13-49
+activity#com.example.healthmanager.MainActivity
+ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:32:9-34:40
+	android:exported
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml:33:13-41
 uses-sdk
 INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Usuario\Desktop\DAM\progAndroidStudio\HealtManager\app\src\main\AndroidManifest.xml

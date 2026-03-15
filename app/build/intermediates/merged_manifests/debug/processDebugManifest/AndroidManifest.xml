@@ -28,10 +28,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.HealthManager" >
         <activity
-            android:name="com.example.healthmanager.TemporizadorActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.healthmanager.MainActivity"
+            android:name="com.example.healthmanager.PerfilUsuarioActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,6 +36,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.healthmanager.CalendarioActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.healthmanager.ResumenActividadActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.healthmanager.TemporizadorActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.healthmanager.MainActivity"
+            android:exported="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
