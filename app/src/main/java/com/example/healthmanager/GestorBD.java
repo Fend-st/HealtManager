@@ -16,7 +16,7 @@ public class GestorBD extends SQLiteOpenHelper {
     private static final int VERSION = 1;
 
 
-    //Variables tabla Usuario y sus columnas:
+    //Variables de la tabla Usuario y sus columnas:
     public static final String TABLA_USUARIO = "usuario";
     public static final String USUARIO_ID = "id_usuario";
     public static final String USUARIO_NOMBRE = "nombre";
@@ -27,7 +27,7 @@ public class GestorBD extends SQLiteOpenHelper {
     public static final String USUARIO_SANGRE = "tipo_sangre";
 
 
-    //Variables tabla Evento y sus columnas:
+    //Variables de la tabla Evento y sus columnas:
     public static final String TABLA_EVENTO = "evento";
     public static final String EVENTO_ID = "id_evento";
     public static final String EVENTO_NOMBRE = "nombre";
@@ -36,7 +36,7 @@ public class GestorBD extends SQLiteOpenHelper {
     public static final String EVENTO_ID_USUARIO = "id_usuario";
 
 
-    //Variables tabla Dia y sus columnas:
+    //Variables de la tabla Dia y sus columnas:
     public static final String TABLA_DIA = "dia";
     public static final String DIA_ID = "id_dia";
     public static final String DIA_FECHA = "fecha";
@@ -72,7 +72,7 @@ public class GestorBD extends SQLiteOpenHelper {
                 + DIA_ID_EVENTO + ") REFERENCES " + TABLA_EVENTO + "(" + EVENTO_ID + "))");
 
 
-        //Introduccion de valores de prueba:
+        //Introducción de valores de prueba:
         db.execSQL("INSERT INTO " + TABLA_USUARIO + " VALUES (null, 'Nombre Prueba', 25, 'Masculino', 1.80, 80.0, 'O+')");
         db.execSQL("INSERT INTO " + TABLA_EVENTO + " VALUES (null, 'Evento Prueba', 'Descripcion Evento Prueba', 0, 1)");
         db.execSQL("INSERT INTO " + TABLA_DIA + " VALUES (null, '2026-01-01', 'Feliz', 1)");
@@ -82,7 +82,7 @@ public class GestorBD extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        //Este código SOLO se ejecuta si aumenta la version de la BD!
+        //¡Este código SOLO se ejecuta si aumenta la version de la BD!
 
         //Activamos las Foreign Keys:
         db.execSQL("PRAGMA foreign_keys = ON");
@@ -97,7 +97,7 @@ public class GestorBD extends SQLiteOpenHelper {
         if (cur.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros y mostramos los datos por consola
             while (!cur.isAfterLast()) {
-                Log.d("GestorBD", "CONSULTA USUARIO DE PRUEBA: \n-ID: " + cur.getInt(0)
+                Log.d("PruebaGestorBD", "CONSULTA USUARIO DE PRUEBA: \n-ID: " + cur.getInt(0)
                         + "\n-Nombre: " + cur.getString(1)
                         + "\n-Edad: " + cur.getInt(2)
                         + "\n-Sexo: " + cur.getString(3)
