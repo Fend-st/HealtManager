@@ -1,0 +1,37 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable fondo_redondeado
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id Ttitulo1
+id btnConfirmar
+id etApellido
+id etEdad
+id etUsuario
+id etpeso
+id formContainer
+id main
+id rbFemenino
+id rbMasculino
+id rbO
+id rbSangreA
+id rbSangreAB
+id rbSangreB
+id rgSangre
+id rgSexo
+id textInputLayouEdad
+id textInputLayoutApellido
+id textInputLayoutUsuario
+id textInputLayoutpeso
+id titulo2
+layout activity_formulario
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.HealthManager
+style Theme.HealthManager
+xml backup_rules
+xml data_extraction_rules
