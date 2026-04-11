@@ -1,5 +1,6 @@
 package com.example.healthmanager;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -147,6 +148,32 @@ public class GestorBD extends SQLiteOpenHelper {
         }
         cur.close();
         db.close();
+    }
+
+    //METODO PARA INSERTAR LOS DATOS DEL USUARIO EN LA BD:
+    public boolean insertarUsuario(String nombre, int edad, String sexo, float altura, float peso, String tipoSangre) {
+        //Abrimos la BD en modo escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Creamos un objeto ContentValues para almacenar los valores a insertar
+        //Esto evita la inyección de SQL!
+        ContentValues datos = new ContentValues();
+        datos.put(USUARIO_NOMBRE, nombre);
+        datos.put(USUARIO_EDAD, edad);
+        datos.put(USUARIO_SEXO, sexo);
+        datos.put(USUARIO_ALTURA, altura);
+        datos.put(USUARIO_PESO, peso);
+        datos.put(USUARIO_SANGRE, tipoSangre);
+
+        //Ejecutamos la inserción
+        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
+        long resultado = db.insert(TABLA_USUARIO, null, datos);
+
+        //Cerramos la BD
+        db.close();
+
+        //Devolvemos true si se ha insertado correctamente
+        return resultado != -1;
     }
 
 }
