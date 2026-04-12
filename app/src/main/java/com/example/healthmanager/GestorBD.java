@@ -151,7 +151,7 @@ public class GestorBD extends SQLiteOpenHelper {
     }
 
     //METODO PARA INSERTAR LOS DATOS DEL USUARIO EN LA BD:
-    public boolean insertarUsuario(String nombre, int edad, String sexo, float altura, float peso, String tipoSangre) {
+    public boolean insertarUsuario(String nombre, int edad, String sexo, double altura, double peso, String tipoSangre) {
         //Abrimos la BD en modo escritura
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -175,5 +175,32 @@ public class GestorBD extends SQLiteOpenHelper {
         //Devolvemos true si se ha insertado correctamente
         return resultado != -1;
     }
+
+    //METODO PARA INSERTAR UN EVENTO EN LA BD:
+    public boolean insertarEvento(String nombre, String descripcion, int seRepite, int idUsuario) {
+        //Abrimos la BD en modo escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Creamos un objeto ContentValues para almacenar los valores a insertar
+        //Esto evita la inyección de SQL!
+        ContentValues datos = new ContentValues();
+        datos.put(EVENTO_NOMBRE, nombre);
+        datos.put(EVENTO_DESCRIPCION, descripcion);
+        datos.put(EVENTO_REPITE, seRepite);
+        datos.put(EVENTO_ID_USUARIO, idUsuario);
+
+        //Ejecutamos la inserción
+        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
+        long resultado = db.insert(TABLA_EVENTO, null, datos);
+
+        //Cerramos la BD
+        db.close();
+
+        //Devolvemos true si se ha insertado correctamente
+        return resultado != -1;
+    }
+
+
+
 
 }

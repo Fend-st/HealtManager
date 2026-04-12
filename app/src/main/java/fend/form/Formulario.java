@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.healthmanager.GestorBD;
 import com.example.healthmanager.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -58,7 +59,22 @@ public class Formulario extends AppCompatActivity {
                 String sexo   = (sexoId   == R.id.rbMasculino) ? "Masculino" : "Femenino";
                 String sangre = obtenerTipoSangre(sangreId);
 
-                // TODO: en el futuro, añadir aqui la logica de envio de datos
+                //Lógica de envío de datos
+                GestorBD gestorBD = new GestorBD(this);
+                boolean exito = gestorBD.insertarUsuario(
+                        nombre + " " + apellido,  //Concatenamos nombre y apellido
+                        edad,
+                        sexo,
+                        0.0,  //Campo pendiente de añadir al formulario!!!
+                        peso,
+                        sangre
+                );
+                if (exito) {
+                    Toast.makeText(this, "Datos guardados correctamente", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(this, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                }
+
                 Toast.makeText(this,
                         "Bienvenido/a " + nombre + " " + apellido + "!",
                         Toast.LENGTH_LONG).show();
