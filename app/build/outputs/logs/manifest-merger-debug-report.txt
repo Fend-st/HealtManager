@@ -113,7 +113,7 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Usuario\.gradle\ca
 activity#fend.crono.Cronometro
 ADDED from C:\Users\Usuario\Desktop\HealtManager\app\src\main\AndroidManifest.xml:14:9-17:58
 	android:exported
-		ADDED from C:\Users\Usuario\Desktop\HealtManager\app\src\main\AndroidManifest.xml:16:13-37
+		ADDED from C:\Users\Usuario\Desktop\HealtManager\app\src\main\AndroidManifest.xml:16:13-36
 	android:theme
 		ADDED from C:\Users\Usuario\Desktop\HealtManager\app\src\main\AndroidManifest.xml:17:13-55
 	android:name

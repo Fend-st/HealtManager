@@ -50,8 +50,8 @@
 30-->C:\Users\Usuario\Desktop\HealtManager\app\src\main\AndroidManifest.xml:14:9-17:58
 31            android:name="fend.crono.Cronometro"
 31-->C:\Users\Usuario\Desktop\HealtManager\app\src\main\AndroidManifest.xml:15:13-49
-32            android:exported="false"
-32-->C:\Users\Usuario\Desktop\HealtManager\app\src\main\AndroidManifest.xml:16:13-37
+32            android:exported="true"
+32-->C:\Users\Usuario\Desktop\HealtManager\app\src\main\AndroidManifest.xml:16:13-36
 33            android:theme="@style/Theme.HealthManager" />
 33-->C:\Users\Usuario\Desktop\HealtManager\app\src\main\AndroidManifest.xml:17:13-55
 34        <activity
