@@ -60,6 +60,10 @@ public class GestorBD extends SQLiteOpenHelper {
 
     }
 
+    public GestorBD() {
+        super(null, NOMBRE_BD, null, VERSION);
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -187,6 +191,25 @@ public class GestorBD extends SQLiteOpenHelper {
         //Cerramos la BD
         db.close();
 
+        //Devolvemos true si se ha insertado correctamente
+        return resultado != -1;
+    }
+    public boolean insertarNombreUsuario(String nombre) {
+        //Abrimos la BD en modo escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Creamos un objeto ContentValues para almacenar los valores a insertar
+        //Esto evita la inyección de SQL!
+        ContentValues datos = new ContentValues();
+        datos.put(USUARIO_NOMBRE, nombre);
+
+        //Ejecutamos la inserción
+        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
+
+        long resultado = db.insert(TABLA_USUARIO, null, datos);
+
+        //Cerramos la BD
+        db.close();
         //Devolvemos true si se ha insertado correctamente
         return resultado != -1;
     }

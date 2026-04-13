@@ -146,4 +146,12 @@ public class Cronometro extends AppCompatActivity {
         int segs = segundosTotales % 60;
         return String.format(Locale.getDefault(), "%02d:%02d:%02d", horas, minutos, segs);
     }
+    public static String obtenerTextoActividad(int idActividad) {
+        if (idActividad == 0) return "ACTIVIDAD ACTUAL: NINGUNA";
+        if (idActividad >= 1 && idActividad <= 5) {
+            return "ACTIVIDAD ACTUAL: " + idActividad;
+        }
+        return "ACTIVIDAD ACTUAL: NINGUNA";
+    }
+
 }

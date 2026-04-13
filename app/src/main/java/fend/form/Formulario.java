@@ -80,6 +80,7 @@ public class Formulario extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
+        setTitle("Formulario");
     }
 
     // ---------------------------

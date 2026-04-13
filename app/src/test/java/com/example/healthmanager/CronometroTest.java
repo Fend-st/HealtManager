@@ -23,4 +23,17 @@ public class CronometroTest {//Test en la clase cronometro
         // Prueba 3: 3661 segundos (1 hora, 1 minuto y 1 segundo)
         assertEquals("01:01:01", Cronometro.formatearTiempo(3661));
     }
+    @Test
+    public void testBotonActividad() {
+        // Probamos el estado inicial o nulo
+        assertEquals("ACTIVIDAD ACTUAL: NINGUNA", Cronometro.obtenerTextoActividad(0));
+
+        // Probamos las actividades válidas
+        assertEquals("ACTIVIDAD ACTUAL: 1", Cronometro.obtenerTextoActividad(1));
+        assertEquals("ACTIVIDAD ACTUAL: 2", Cronometro.obtenerTextoActividad(2));
+        assertEquals("ACTIVIDAD ACTUAL: 3", Cronometro.obtenerTextoActividad(3));
+
+        // Prueba extra: ¿Qué pasa si llega un número inesperado?
+        assertEquals("ACTIVIDAD ACTUAL: NINGUNA", Cronometro.obtenerTextoActividad(99));
+    }
 }

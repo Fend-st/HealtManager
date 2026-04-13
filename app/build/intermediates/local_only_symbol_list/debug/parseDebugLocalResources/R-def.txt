@@ -15,7 +15,6 @@ id action_FirstFragment_to_SecondFragment
 id action_SecondFragment_to_FirstFragment
 id boton1_main
 id boton1_perfil
-id boton1_temporizador
 id boton2_main
 id boton3_main
 id btnActivity1
@@ -47,7 +46,6 @@ id fila6_tabla_calendario
 id formContainer
 id imageView
 id listView
-id lista1_temporizador
 id llActivityButtons
 id main
 id nav_graph
@@ -70,7 +68,6 @@ id texto1_calendario
 id texto1_main
 id texto1_perfil
 id texto1_resumen
-id texto1_temporizador
 id texto2_perfil
 id titulo2
 id tvCurrentActivity
@@ -82,7 +79,6 @@ layout activity_formulario
 layout activity_main
 layout activity_perfil_usuario
 layout activity_resumen_actividad
-layout activity_temporizador
 menu menu_main
 mipmap ic_launcher
 mipmap ic_launcher_round

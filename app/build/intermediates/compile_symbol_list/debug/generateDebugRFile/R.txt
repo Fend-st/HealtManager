@@ -13,7 +13,6 @@ int id action_FirstFragment_to_SecondFragment 0x0
 int id action_SecondFragment_to_FirstFragment 0x0
 int id boton1_main 0x0
 int id boton1_perfil 0x0
-int id boton1_temporizador 0x0
 int id boton2_main 0x0
 int id boton3_main 0x0
 int id btnActivity1 0x0
@@ -45,7 +44,6 @@ int id fila6_tabla_calendario 0x0
 int id formContainer 0x0
 int id imageView 0x0
 int id listView 0x0
-int id lista1_temporizador 0x0
 int id llActivityButtons 0x0
 int id main 0x0
 int id nav_graph 0x0
@@ -68,7 +66,6 @@ int id texto1_calendario 0x0
 int id texto1_main 0x0
 int id texto1_perfil 0x0
 int id texto1_resumen 0x0
-int id texto1_temporizador 0x0
 int id texto2_perfil 0x0
 int id titulo2 0x0
 int id tvCurrentActivity 0x0
@@ -80,7 +77,6 @@ int layout activity_formulario 0x0
 int layout activity_main 0x0
 int layout activity_perfil_usuario 0x0
 int layout activity_resumen_actividad 0x0
-int layout activity_temporizador 0x0
 int menu menu_main 0x0
 int mipmap ic_launcher 0x0
 int mipmap ic_launcher_round 0x0
