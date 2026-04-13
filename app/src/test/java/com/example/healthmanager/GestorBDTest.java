@@ -6,8 +6,14 @@ import org.junit.Test;
 
 public class GestorBDTest {
 
+    /***
+     * pruebas de la base de datos
+     */
+    // consulta
+    //-------------------------------------
     @Test
     public void consultarUsuario() {
+
     }
 
     @Test
@@ -18,6 +24,8 @@ public class GestorBDTest {
     public void consultarDia() {
     }
 
+    // insertar datos
+    //-------------------------------------------
     @Test
     public void insertarUsuario() {
     }

@@ -59,6 +59,7 @@ public class Formulario extends AppCompatActivity {
                 String sexo   = (sexoId   == R.id.rbMasculino) ? "Masculino" : "Femenino";
                 String sangre = obtenerTipoSangre(sangreId);
 
+                // =================================================================================
                 //Lógica de envío de datos
                 GestorBD gestorBD = new GestorBD(this);
                 boolean exito = gestorBD.insertarUsuario(
