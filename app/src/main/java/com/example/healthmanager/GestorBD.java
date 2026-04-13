@@ -44,6 +44,16 @@ public class GestorBD extends SQLiteOpenHelper {
     public static final String DIA_EMOCION = "emocion";
     public static final String DIA_ID_EVENTO = "id_evento";
 
+
+    //Variables de la tabla Actividad y sus columnas:
+    public static final String TABLA_ACTIVIDAD = "actividad";
+    public static final String ACTIVIDAD_ID = "id_actividad";
+    public static final String ACTIVIDAD_NOMBRE = "nombre";
+    public static final String ACTIVIDAD_TIEMPO = "tiempo";
+    public static final String ACTIVIDAD_FECHA = "fecha";
+    public static final String ACTIVIDAD_ID_USUARIO = "id_usuario";
+
+
     //Creación de la Base de Datos
     public GestorBD(@Nullable Context context) {
         super(context, NOMBRE_BD, null, VERSION);
@@ -72,11 +82,16 @@ public class GestorBD extends SQLiteOpenHelper {
                 + DIA_FECHA + " TEXT, " + DIA_EMOCION + " TEXT, " + DIA_ID_EVENTO + " INTEGER, FOREIGN KEY ("
                 + DIA_ID_EVENTO + ") REFERENCES " + TABLA_EVENTO + "(" + EVENTO_ID + "))");
 
+        //Creación de la tabla Actividad:
+        db.execSQL("CREATE TABLE " + TABLA_ACTIVIDAD + " (" + ACTIVIDAD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + ACTIVIDAD_NOMBRE + " TEXT, " + ACTIVIDAD_TIEMPO + " TEXT, " + ACTIVIDAD_FECHA + " TEXT, "
+                + ACTIVIDAD_ID_USUARIO + " INTEGER, FOREIGN KEY (" + ACTIVIDAD_ID_USUARIO + ") REFERENCES "
+                + TABLA_USUARIO + "(" + USUARIO_ID + "))");
 
         //Introducción de valores de prueba:
-        db.execSQL("INSERT INTO " + TABLA_USUARIO + " VALUES (null, 'Nombre Prueba', 25, 'Masculino', 1.80, 80.0, 'O+')");
-        db.execSQL("INSERT INTO " + TABLA_EVENTO + " VALUES (null, 'Evento Prueba', 'Descripcion Evento Prueba', 0, 1)");
-        db.execSQL("INSERT INTO " + TABLA_DIA + " VALUES (null, '2026-01-01', 'Feliz', 1)");
+        //db.execSQL("INSERT INTO " + TABLA_USUARIO + " VALUES (null, 'Nombre Prueba', 25, 'Masculino', 1.80, 80.0, 'O+')");
+        //db.execSQL("INSERT INTO " + TABLA_EVENTO + " VALUES (null, 'Evento Prueba', 'Descripción Evento Prueba', 0, 1)");
+        //db.execSQL("INSERT INTO " + TABLA_DIA + " VALUES (null, '2026-01-01', 'Feliz', 1)");
 
     }
 
@@ -200,7 +215,29 @@ public class GestorBD extends SQLiteOpenHelper {
         return resultado != -1;
     }
 
+    //METODO PARA INSERTAR UNA ACTIVIDAD EN LA BD:
+    public boolean insertarActividad(String nombre, String tiempo, String fecha, int idUsuario) {
+        //Abrimos la BD en modo escritura
+        SQLiteDatabase db = this.getWritableDatabase();
 
+        //Creamos un objeto ContentValues para almacenar los valores a insertar
+        //Esto evita la inyección de SQL!
+        ContentValues datos = new ContentValues();
+        datos.put(ACTIVIDAD_NOMBRE, nombre);
+        datos.put(ACTIVIDAD_TIEMPO, tiempo);
+        datos.put(ACTIVIDAD_FECHA, fecha);
+        datos.put(ACTIVIDAD_ID_USUARIO, idUsuario);
+
+        //Ejecutamos la inserción
+        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
+        long resultado = db.insert(TABLA_ACTIVIDAD, null, datos);
+
+        //Cerramos la BD
+        db.close();
+
+        //Devolvemos true si se ha insertado correctamente
+        return resultado != -1;
+    }
 
 
 }
