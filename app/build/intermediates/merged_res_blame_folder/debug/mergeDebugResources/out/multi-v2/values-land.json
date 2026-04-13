@@ -4,23 +4,13 @@
             "outputFile": "com.example.healthmanager.app-mergeDebugResources-44:/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\9.3.1\\transforms\\dc50eba268d88819df23dd3b98c29618\\workspace\\transformed\\appcompat-1.7.1\\res\\values-land\\values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,125,196",
-                        "endColumns": "69,70,67",
-                        "endOffsets": "120,191,259"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Usuario\\Desktop\\HealtManager\\app\\src\\main\\res\\values-land\\dimens.xml",
+                    "source": "C:\\Users\\diazf\\AndroidStudioProjects\\HealtManager\\app\\src\\main\\res\\values-land\\dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "6",
-                        "startOffsets": "19",
+                        "startOffsets": "18",
                         "endColumns": "43",
-                        "endOffsets": "56"
+                        "endOffsets": "55"
                     },
                     "to": {
                         "startLines": "5",
@@ -31,7 +21,17 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\9.3.1\\transforms\\574397b9849683962fa22db9eae3aa77\\workspace\\transformed\\material-1.13.0\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\diazf\\.gradle\\caches\\9.3.1\\transforms\\dc50eba268d88819df23dd3b98c29618\\workspace\\transformed\\appcompat-1.7.1\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\diazf\\.gradle\\caches\\9.3.1\\transforms\\574397b9849683962fa22db9eae3aa77\\workspace\\transformed\\material-1.13.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,22,31,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
