@@ -34,7 +34,7 @@
         sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
-    </string></file><file path="C:\Users\Usuario\Desktop\HealtManager\app\src\main\res\values\themes.xml" qualifiers=""><style name="Base.Theme.HealthManager" parent="Theme.Material3.DayNight.NoActionBar">
+    </string></file><file path="C:\Users\Usuario\Desktop\HealtManager\app\src\main\res\values\themes.xml" qualifiers=""><style name="Base.Theme.HealthManager" parent="Theme.Material3.DayNight">
         
         
     </style><style name="Theme.HealthManager" parent="Base.Theme.HealthManager"/></file><file path="C:\Users\Usuario\Desktop\HealtManager\app\src\main\res\values-land\dimens.xml" qualifiers="land"><dimen name="fab_margin">48dp</dimen></file><file path="C:\Users\Usuario\Desktop\HealtManager\app\src\main\res\values-night\themes.xml" qualifiers="night-v8"><style name="Base.Theme.HealthManager" parent="Theme.Material3.DayNight.NoActionBar">

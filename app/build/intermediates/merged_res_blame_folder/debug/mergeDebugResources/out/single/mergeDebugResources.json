@@ -84,10 +84,6 @@
         "source": "C:\\Users\\Usuario\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-main-48:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-46:/layout_activity_cronometro.xml.flat",
-        "source": "com.example.healthmanager.app-main-48:/layout/activity_cronometro.xml"
-    },
-    {
         "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-debug-46:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\Usuario\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-main-48:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
@@ -110,5 +106,9 @@
     {
         "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-debug-46:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Usuario\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-main-48:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.healthmanager.app-debug-46:/menu_menu_main.xml.flat",
+        "source": "com.example.healthmanager.app-main-48:/menu/menu_main.xml"
     }
 ]

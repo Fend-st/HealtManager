@@ -3979,7 +3979,6 @@ int id info 0x7f080111
 int id invisible 0x7f080112
 int id inward 0x7f080113
 int id italic 0x7f080114
-int id item1_menu 0x7f080115
 int id item_touch_helper_previous_elevation 0x7f080116
 int id jumpToEnd 0x7f080117
 int id jumpToStart 0x7f080118
