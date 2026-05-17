@@ -158,7 +158,7 @@
 
         </LinearLayout>
 
-        <!-- MENÚ INFERIOR -->
+        <!-- MENÚ NAVEGACIÓN -->
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
