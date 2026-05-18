@@ -12,8 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.healthmanager.GestorBD;
 import com.example.healthmanager.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class Cronometro extends AppCompatActivity {
@@ -32,6 +36,7 @@ public class Cronometro extends AppCompatActivity {
     protected int progress = 0;
     protected boolean isPlaying = false;
     protected Handler handler;
+    protected String nombreActividad = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,34 +67,50 @@ public class Cronometro extends AppCompatActivity {
         tvCurrentActivity.setText("ACTIVIDAD ACTUAL: NINGUNA");
         circularProgressBar.setProgress(0);
 
-        btnActivity1.setOnClickListener(v -> {//Selecionamos la actividad 1
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: 1");
+        //Desactivamos el botón Play del cronómetro hasta que el usuario seleccione una actividad
+        btnActivity6.setEnabled(false);
+
+        //Inicializamos los botones:
+        btnActivity1.setOnClickListener(v -> {//Seleccionamos la actividad 1
             posicion = 1;
+            nombreActividad = "Caminar";
+            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
+            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
 
         });
         btnActivity2.setOnClickListener(v -> {//Selecionamos la actividad 2
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: 2");
             posicion = 2;
+            nombreActividad = "Correr";
+            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
+            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
 
         });
         btnActivity3.setOnClickListener(v -> {//Selecionamos la actividad 3
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: 3");
             posicion = 3;
+            nombreActividad = "Gym";
+            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
+            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
 
         });
         btnActivity4.setOnClickListener(v -> {//Selecionamos la actividad 4
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: 4");
             posicion = 4;
+            nombreActividad = "Ciclismo";
+            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
+            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
 
         });
         btnActivity5.setOnClickListener(v -> {//Selecionamos la actividad 5
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: 5");
             posicion = 5;
+            nombreActividad = "Yoga";
+            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
+            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
 
         });
-        btnActivity6.setOnClickListener(v -> {//Comenzamos el cronometro en función de la actividad seleccionada
+        btnActivity6.setOnClickListener(v -> {//Comenzamos el cronómetro (Botón PLAY)
+            isPlaying = true;
+            ejecutarCronometro();
 
-            if(posicion==1){
+            /*if(posicion==1){
                 isPlaying = true;
                 ejecutarCronometro();
 
@@ -110,14 +131,43 @@ public class Cronometro extends AppCompatActivity {
                 ejecutarCronometro();
             }else {
                 Toast.makeText(this, "No hay ninguna actividad registrada", Toast.LENGTH_SHORT).show();
-            }
+            }*/
         });
-        btnActivity7.setOnClickListener(v -> {//Paramos el cronometro
+        btnActivity7.setOnClickListener(v -> {//Paramos el cronómetro (Botón STOP)
+
+            //Si no hay ninguna actividad en curso, no hacemos nada
+            if (progress == 0) {
+                Toast.makeText(this, "No hay ninguna actividad en curso", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             isPlaying = false;
 
+            //Obtenemos el tiempo del cronómetro
+            String tiempo = tvTimer.getText().toString();
+
+            //Obtenemos la fecha del sistema
+            String fecha = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+            //Guardamos los datos en la base de datos
+            GestorBD gbd = new GestorBD(this);
+            boolean insertado = gbd.insertarActividad(nombreActividad, tiempo, fecha, 1);
+
+            if (insertado) {
+                Toast.makeText(this, "Actividad guardada correctamente", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Error al guardar la actividad", Toast.LENGTH_SHORT).show();
+            }
+
+            //Reiniciamos los valores del cronómetro
             progress = 0;
             tvTimer.setText("00:00:00");
 
+            //Reseteamos la posicion y deshabilitamos el Play
+            posicion = 0;
+            btnActivity6.setEnabled(false);
+            circularProgressBar.setProgress(0);
+            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: NINGUNA");
         });
 
     }
@@ -146,12 +196,13 @@ public class Cronometro extends AppCompatActivity {
         int segs = segundosTotales % 60;
         return String.format(Locale.getDefault(), "%02d:%02d:%02d", horas, minutos, segs);
     }
+    /*
     public static String obtenerTextoActividad(int idActividad) {
         if (idActividad == 0) return "ACTIVIDAD ACTUAL: NINGUNA";
         if (idActividad >= 1 && idActividad <= 5) {
             return "ACTIVIDAD ACTUAL: " + idActividad;
         }
         return "ACTIVIDAD ACTUAL: NINGUNA";
-    }
+    }*/
 
 }
