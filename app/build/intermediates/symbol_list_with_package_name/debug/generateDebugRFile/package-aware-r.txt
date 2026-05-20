@@ -1,11 +1,13 @@
 com.example.healthmanager
 color black
+color nav_colors
 color white
 dimen fab_margin
 drawable circular_progress
 drawable fondo_redondeado
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable nav_redondeada
 drawable rounded_container
 drawable tip_food
 drawable tip_sleep
@@ -55,6 +57,8 @@ id nav_graph
 id nav_home
 id nav_settings
 id nav_stats
+id nav_summary
+id nav_timer
 id rbFemenino
 id rbMasculino
 id rbO
@@ -86,6 +90,7 @@ layout activity_main
 layout activity_perfil_usuario
 layout activity_resumen_actividad
 layout item_tip
+menu barra_navegacion
 menu bottom_menu
 menu menu_main
 mipmap ic_launcher
