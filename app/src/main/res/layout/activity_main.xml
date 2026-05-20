@@ -165,10 +165,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/nav_redondeada"
-            app:itemIconTint="@color/nav_colors"
-            app:itemTextColor="@color/nav_colors"
-            app:menu="@menu/barra_navegacion" />
+            android:background="@drawable/nav_redonda"
+            app:itemIconTint="@color/nav_color"
+            app:itemTextColor="@color/nav_color"
+            app:menu="@menu/barra_navegadr" />
 
     </LinearLayout>
 
