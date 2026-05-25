@@ -4,7 +4,7 @@
             "outputFile": "com.example.healthmanager.app-mergeDebugResources-44:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\9.3.1\\transforms\\403aab731de4c1ef2318e0cc4db926a6\\workspace\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\jorge\\.gradle\\caches\\9.4.1\\transforms\\dc9398bd8b071616752dafd79ac11732\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,18 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\9.3.1\\transforms\\dc50eba268d88819df23dd3b98c29618\\workspace\\transformed\\appcompat-1.7.1\\res\\values-v23\\values-v23.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,190,325,400,487,1225,1975,2094,2221,2443,2667,2782,2889,3002",
-                        "endLines": "2,3,4,5,19,33,34,35,38,42,43,44,45,49",
-                        "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
-                        "endOffsets": "185,320,395,482,1220,1970,2089,2216,2438,2662,2777,2884,2997,3227"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\9.3.1\\transforms\\574397b9849683962fa22db9eae3aa77\\workspace\\transformed\\material-1.13.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\jorge\\.gradle\\caches\\9.4.1\\transforms\\16027af73119f35e3be221ef136eac7d\\transformed\\material-1.13.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,5,9,13,16,19,22,25,28,32",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -53,7 +42,18 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Usuario\\Desktop\\HealtManager\\app\\src\\main\\res\\values-v23\\themes.xml",
+                    "source": "C:\\Users\\jorge\\.gradle\\caches\\9.4.1\\transforms\\7e1958b34d0ff5810a0066586c1a9f99\\transformed\\appcompat-1.7.1\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,190,325,400,487,1225,1975,2094,2221,2443,2667,2782,2889,3002",
+                        "endLines": "2,3,4,5,19,33,34,35,38,42,43,44,45,49",
+                        "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
+                        "endOffsets": "185,320,395,482,1220,1970,2089,2216,2438,2662,2777,2884,2997,3227"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\jorge\\StudioProjects\\HealtManager\\app\\src\\main\\res\\values-v23\\themes.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "2",

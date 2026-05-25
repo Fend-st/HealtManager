@@ -44,9 +44,8 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <style name="Base.Theme.HealthManager" parent="Theme.Material3.DayNight">
-        
-        
+    <style name="Base.Theme.HealthManager" parent="Theme.Material3.DayNight.NoActionBar">
+
     </style>
     <style name="Theme.HealthManager" parent="Base.Theme.HealthManager"/>
 </resources>

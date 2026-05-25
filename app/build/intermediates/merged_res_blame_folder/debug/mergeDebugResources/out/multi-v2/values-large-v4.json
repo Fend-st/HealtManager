@@ -4,7 +4,7 @@
             "outputFile": "com.example.healthmanager.app-mergeDebugResources-44:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\9.3.1\\transforms\\574397b9849683962fa22db9eae3aa77\\workspace\\transformed\\material-1.13.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\jorge\\.gradle\\caches\\9.4.1\\transforms\\16027af73119f35e3be221ef136eac7d\\transformed\\material-1.13.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\9.3.1\\transforms\\dc50eba268d88819df23dd3b98c29618\\workspace\\transformed\\appcompat-1.7.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\jorge\\.gradle\\caches\\9.4.1\\transforms\\7e1958b34d0ff5810a0066586c1a9f99\\transformed\\appcompat-1.7.1\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
