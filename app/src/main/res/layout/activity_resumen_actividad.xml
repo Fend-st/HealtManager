@@ -5,56 +5,166 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#71C3EB"
     tools:context=".ResumenActividadActivity">
 
-    <TextView
-        android:id="@+id/texto1_resumen"
+    <ScrollView
+        android:id="@+id/scroll_RA"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="center_horizontal"
-        android:text="RESUMEN DE ACTIVIDAD"
-        android:textSize="20sp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:src="@android:drawable/ic_menu_camera"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texto1_resumen" />
+        <LinearLayout
+            android:id="@+id/linearLa_RA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="0dp"
-        android:layout_height="271dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            <TextView
+                android:id="@+id/titulo1_RA"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:text="Registro de Actividad"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                tools:text="Registro de Actividad" />
 
-    <Switch
-        android:id="@+id/switch1_main"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:textOff="Mensual"
-        android:textOn="Diario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView" />
+            <LinearLayout
+                android:id="@+id/formContainer1_RA"
+                android:layout_width="match_parent"
+                android:layout_height="599dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/fondo_redondeado"
+                android:orientation="vertical"
+                android:padding="5dp">
 
+                <TextView
+                    android:id="@+id/texto1_RA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text=".........."
+                    android:textColor="#1D1D1D"
+                    android:textSize="30sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressDormir_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:max="24"
+                    android:progress="8"
+                    android:progressTint="#F44336"
+                    android:scaleY="9" />
+
+                <TextView
+                    android:id="@+id/texto2_RA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="TextView"
+                    android:textColor="#1D1D1D"
+                    android:textSize="30sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressTrabajar_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:max="24"
+                    android:progress="8"
+                    android:progressTint="#2196F3"
+                    android:scaleY="9" />
+
+                <TextView
+                    android:id="@+id/texto3_RA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="TextView"
+                    android:textColor="#1D1D1D"
+                    android:textSize="30sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressEjercicio1_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:max="24"
+                    android:progress="2"
+                    android:progressTint="#4CAF50"
+                    android:scaleY="9" />
+
+                <TextView
+                    android:id="@+id/texto4_RA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="TextView"
+                    android:textColor="#1D1D1D"
+                    android:textSize="30sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressEjercicio2_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:max="24"
+                    android:progress="2"
+                    android:progressTint="#4CAF50"
+                    android:scaleY="9" />
+
+                <TextView
+                    android:id="@+id/texto5_RA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="TextView"
+                    android:textColor="#1D1D1D"
+                    android:textSize="30sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressEjercicio3_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:max="24"
+                    android:progress="2"
+                    android:progressTint="#4CAF50"
+                    android:scaleY="9" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

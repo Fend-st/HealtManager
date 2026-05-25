@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/Ttitulo1"
+                android:id="@+id/titulo1_RA"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -55,7 +55,7 @@
                 android:textColor="#FFFFFF" />
 
             <LinearLayout
-                android:id="@+id/formContainer"
+                android:id="@+id/formContainer1_RA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
