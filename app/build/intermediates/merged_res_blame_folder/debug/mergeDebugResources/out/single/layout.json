@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-mergeDebugResources-45:\\layout\\activity_perfil_usuario.xml",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-main-48:\\layout\\activity_perfil_usuario.xml"
+    },
+    {
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-mergeDebugResources-45:\\layout\\activity_resumen_actividad.xml",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-main-48:\\layout\\activity_resumen_actividad.xml"
+    },
+    {
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-mergeDebugResources-45:\\layout\\activity_calendario.xml",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-main-48:\\layout\\activity_calendario.xml"
+    },
+    {
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-mergeDebugResources-45:\\layout\\activity_formulario.xml",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-main-48:\\layout\\activity_formulario.xml"
+    },
+    {
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-mergeDebugResources-45:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-main-48:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-mergeDebugResources-45:\\layout\\activity_cronometro.xml",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.3.1\\com.example.healthmanager.app-main-48:\\layout\\activity_cronometro.xml"
+    },
+    {
+        "merged": "com.example.healthmanager.app-mergeDebugResources-45:/layout/activity_cronometro.xml",
+        "source": "com.example.healthmanager.app-main-48:/layout/activity_cronometro.xml"
+    }
+]
