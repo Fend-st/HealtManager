@@ -3,6 +3,7 @@ package fend.crono;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,11 +26,11 @@ public class Cronometro extends AppCompatActivity {
     protected TextView tvTimer;
     protected TextView tvCurrentActivity;
     protected TextView tvTitle;
-    protected Button btnActivity1;
-    protected Button btnActivity2;
-    protected Button btnActivity3;
-    protected Button btnActivity4;
-    protected Button btnActivity5;
+    protected ImageButton btnActivity1;
+    protected ImageButton btnActivity2;
+    protected ImageButton btnActivity3;
+    protected ImageButton btnActivity4;
+    protected ImageButton btnActivity5;
     protected Button btnActivity6;
     protected Button btnActivity7;
     protected int posicion = 0;
@@ -87,7 +88,7 @@ public class Cronometro extends AppCompatActivity {
         });
         btnActivity3.setOnClickListener(v -> {//Selecionamos la actividad 3
             posicion = 3;
-            nombreActividad = "Gym";
+            nombreActividad = "Gimnasio";
             tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
             btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
 
@@ -107,7 +108,7 @@ public class Cronometro extends AppCompatActivity {
 
         });
         btnActivity6.setOnClickListener(v -> {//Comenzamos el cronómetro (Botón PLAY)
-            isPlaying = true;
+            btnActivity6.setEnabled(false); //Desactivamos el botón Play del cronómetro
             ejecutarCronometro();
 
             /*if(posicion==1){
@@ -140,8 +141,8 @@ public class Cronometro extends AppCompatActivity {
                 Toast.makeText(this, "No hay ninguna actividad en curso", Toast.LENGTH_SHORT).show();
                 return;
             }
-
             isPlaying = false;
+            btnActivity6.setEnabled(true); //Activamos de nuevo el botón Play del cronómetro
 
             //Obtenemos el tiempo del cronómetro
             String tiempo = tvTimer.getText().toString();
@@ -173,6 +174,9 @@ public class Cronometro extends AppCompatActivity {
     }
     //Método para ejecutar el cronometro
     private void ejecutarCronometro() {
+        if (isPlaying) return; //Si el cronómetro ya está en marcha, no hacemos nada
+        isPlaying = true; //Si el cronómetro no está en marcha, lo iniciamos
+
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
