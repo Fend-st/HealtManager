@@ -236,36 +236,7 @@ public class GestorBD extends SQLiteOpenHelper {
         return curUsuario;
     }
 
-    /*
-     * CÓDIGO PENDIENTE DE INTEGRAR EN EL DASHBOARD! PARA JORGE WITH LOVE! XD
-     * NO DEJAR AQUI!
-     *
-     *
-     * //METODO PARA MOSTRAR LOS DATOS DEL USUARIO:
-     *
-     * //Inicializar TextViews o similar:
-     * TextView tvNombre = findViewById(R.id.tvNombre);
-     * TextView tvPeso = findViewById(R.id.tvPeso);
-     * TextView tvAltura = findViewById(R.id.tvAltura);
-     * TextView tvIMC = findViewById(R.id.tvIMC);
-     *
-     * //Obtener y mostrar los datos del usuario:
-     * Cursor curUsuario = gbd.obtenerUsuario();
-     * if (curUsuario.moveToFirst()) {
-     *     String nombre = curUsuario.getString(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_NOMBRE));
-     *     double peso = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_PESO));
-     *     double altura = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_ALTURA));
-     *     double alturaEnMetros = altura / 100;
-     *     double imc = peso / (alturaEnMetros * alturaEnMetros);
-     *
-     *     //Actualizar TextViews o similar con los datos del usuario:
-     *     tvNombre.setText("Nombre: " + nombre);
-     *     tvPeso.setText("Peso: " + peso + " kg");
-     *     tvAltura.setText("Altura: " + altura + " cm");
-     *     tvIMC.setText("IMC: " + String.format("%.2f", imc));
-     * }
-     * curUsuario.close();
-     */
+
 
 
     //METODO PARA OBTENER LOS DATOS DEL EVENTO DE LA TABLA_EVENTO:
