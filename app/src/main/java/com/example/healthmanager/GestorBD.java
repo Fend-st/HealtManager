@@ -108,9 +108,203 @@ public class GestorBD extends SQLiteOpenHelper {
         db.execSQL("PRAGMA foreign_keys = ON");
     }
 
+    //METODO PARA COMPROBAR SI EXISTE UN REGISTRO (USUARIO) EN LA TABLA USUARIO
+    public boolean existeUsuario() {
+        SQLiteDatabase db = this.getReadableDatabase();
 
-    //MÉTODOS DE PRUEBA PARA MOSTRAR POR CONSOLA LOS DATOS DE PRUEBA:
-    public void consultarUsuario(){
+        //Consultamos el número de registros de la tabla Usuario
+        Cursor cur = db.rawQuery("SELECT COUNT(*) FROM " + TABLA_USUARIO, null);
+        cur.moveToFirst();
+
+        //Obtenemos el número de registros
+        int registros = cur.getInt(0);
+
+        //Cerramos el cursor y la base de datos
+        cur.close();
+        db.close();
+
+        //Devolvemos true si hay al menos un registro (un Usuario)
+        return registros > 0;
+    }
+
+    // -------------------------- METODOS PARA INSERTAR DATOS ------------------------------------
+
+    //METODO PARA INSERTAR LOS DATOS DEL USUARIO EN LA TABLA_USUARIO:
+    public boolean insertarUsuario(String nombre, int edad, String sexo, double altura, double peso, String tipoSangre) {
+        //Abrimos la BD en modo escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Creamos un objeto ContentValues para almacenar los valores a insertar
+        ContentValues datos = new ContentValues(); //Esto evita la inyección de SQL!
+        datos.put(USUARIO_NOMBRE, nombre);
+        datos.put(USUARIO_EDAD, edad);
+        datos.put(USUARIO_SEXO, sexo);
+        datos.put(USUARIO_ALTURA, altura);
+        datos.put(USUARIO_PESO, peso);
+        datos.put(USUARIO_SANGRE, tipoSangre);
+
+        //Ejecutamos la inserción
+        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
+        long resultado = db.insert(TABLA_USUARIO, null, datos);
+
+        //Cerramos la BD
+        db.close();
+
+        //Devolvemos true si se ha insertado correctamente
+        return resultado != -1;
+    }
+
+    //METODO PARA INSERTAR UN EVENTO EN LA TABLA_EVENTO:
+    public boolean insertarEvento(String nombre, String descripcion, int seRepite, int idUsuario) {
+        //Abrimos la BD en modo escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Creamos un objeto ContentValues para almacenar los valores a insertar
+        ContentValues datos = new ContentValues(); //Esto evita la inyección de SQL!
+        datos.put(EVENTO_NOMBRE, nombre);
+        datos.put(EVENTO_DESCRIPCION, descripcion);
+        datos.put(EVENTO_REPITE, seRepite);
+        datos.put(EVENTO_ID_USUARIO, idUsuario);
+
+        //Ejecutamos la inserción
+        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
+        long resultado = db.insert(TABLA_EVENTO, null, datos);
+
+        //Cerramos la BD
+        db.close();
+
+        //Devolvemos true si se ha insertado correctamente
+        return resultado != -1;
+    }
+
+    //METODO PARA INSERTAR UN DIA EN LA TABLA_DIA:
+    public boolean insertarDia(String fecha, String emocion, int idEvento) {
+        //Abrimos la BD en modo escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Creamos un objeto ContentValues para almacenar los valores a insertar
+        ContentValues datos = new ContentValues(); //Esto evita la inyección de SQL!
+        datos.put(DIA_FECHA, fecha);
+        datos.put(DIA_EMOCION, emocion);
+        datos.put(DIA_ID_EVENTO, idEvento);
+
+        //Ejecutamos la inserción
+        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
+        long resultado = db.insert(TABLA_DIA, null, datos);
+
+        //Cerramos la BD
+        db.close();
+
+        //Devolvemos true si se ha insertado correctamente
+        return resultado != -1;
+    }
+
+
+    //METODO PARA INSERTAR UNA ACTIVIDAD EN LA TABLA_ACTIVIDAD:
+    public boolean insertarActividad(String nombre, String tiempo, String fecha, int idUsuario) {
+        //Abrimos la BD en modo escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Creamos un objeto ContentValues para almacenar los valores a insertar
+        ContentValues datos = new ContentValues(); //Esto evita la inyección de SQL!
+        datos.put(ACTIVIDAD_NOMBRE, nombre);
+        datos.put(ACTIVIDAD_TIEMPO, tiempo);
+        datos.put(ACTIVIDAD_FECHA, fecha);
+        datos.put(ACTIVIDAD_ID_USUARIO, idUsuario);
+
+        //Ejecutamos la inserción
+        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
+        long resultado = db.insert(TABLA_ACTIVIDAD, null, datos);
+
+        //Cerramos la BD
+        db.close();
+
+        //Devolvemos true si se ha insertado correctamente
+        return resultado != -1;
+    }
+
+
+    // ------------------------ METODOS PARA OBTENER DATOS ------------------------------------
+
+    //METODO PARA OBTENER LOS DATOS DEL USUARIO DE LA TABLA_USUARIO:
+    public Cursor obtenerUsuario() {
+        //Abrimos la BD en modo lectura
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Guardamos la consulta en un cursor y lo devolvemos
+        Cursor curUsuario = db.rawQuery("SELECT * FROM " + TABLA_USUARIO, null);
+        return curUsuario;
+    }
+
+    /*
+     * CÓDIGO PENDIENTE DE INTEGRAR EN EL DASHBOARD! PARA JORGE WITH LOVE! XD
+     * NO DEJAR AQUI!
+     *
+     *
+     * //METODO PARA MOSTRAR LOS DATOS DEL USUARIO:
+     *
+     * //Inicializar TextViews o similar:
+     * TextView tvNombre = findViewById(R.id.tvNombre);
+     * TextView tvPeso = findViewById(R.id.tvPeso);
+     * TextView tvAltura = findViewById(R.id.tvAltura);
+     * TextView tvIMC = findViewById(R.id.tvIMC);
+     *
+     * //Obtener y mostrar los datos del usuario:
+     * Cursor curUsuario = gbd.obtenerUsuario();
+     * if (curUsuario.moveToFirst()) {
+     *     String nombre = curUsuario.getString(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_NOMBRE));
+     *     double peso = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_PESO));
+     *     double altura = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_ALTURA));
+     *     double alturaEnMetros = altura / 100;
+     *     double imc = peso / (alturaEnMetros * alturaEnMetros);
+     *
+     *     //Actualizar TextViews o similar con los datos del usuario:
+     *     tvNombre.setText("Nombre: " + nombre);
+     *     tvPeso.setText("Peso: " + peso + " kg");
+     *     tvAltura.setText("Altura: " + altura + " cm");
+     *     tvIMC.setText("IMC: " + String.format("%.2f", imc));
+     * }
+     * curUsuario.close();
+     */
+
+
+    //METODO PARA OBTENER LOS DATOS DEL EVENTO DE LA TABLA_EVENTO:
+    public Cursor obtenerEvento() {
+        //Abrimos la BD en modo lectura
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Guardamos la consulta en un cursor y lo devolvemos
+        Cursor curEvento = db.rawQuery("SELECT * FROM " + TABLA_EVENTO, null);
+        return curEvento;
+    }
+
+
+    //METODO PARA OBTENER LOS DATOS DEL DIA DE LA TABLA_DIA:
+    public Cursor obtenerDia() {
+        //Abrimos la BD en modo lectura
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Guardamos la consulta en un cursor y lo devolvemos
+        Cursor curDia = db.rawQuery("SELECT * FROM " + TABLA_DIA, null);
+        return curDia;
+    }
+
+
+    //METODO PARA OBTENER LOS DATOS DE UNA ACTIVIDAD DE LA TABLA_ACTIVIDAD:
+    public Cursor obtenerActividad() {
+        //Abrimos la BD en modo lectura
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Guardamos la consulta en un cursor y lo devolvemos
+        Cursor curActividad = db.rawQuery("SELECT * FROM " + TABLA_ACTIVIDAD, null);
+        return curActividad;
+    }
+
+
+    // ------------------ METODOS DE PRUEBA PARA MOSTRAR DATOS POR CONSOLA --------------------
+
+    //METODO DE PRUEBA PARA MOSTRAR POR CONSOLA LOS DATOS DEL USUARIO:
+    public void consultarUsuario() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cur = db.rawQuery("SELECT * FROM " + TABLA_USUARIO, null);
 
@@ -131,7 +325,9 @@ public class GestorBD extends SQLiteOpenHelper {
         cur.close();
         db.close();
     }
-    public void consultarEvento(){
+
+    //METODO DE PRUEBA PARA MOSTRAR POR CONSOLA LOS DATOS DE UN EVENTO:
+    public void consultarEvento() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cur = db.rawQuery("SELECT * FROM " + TABLA_EVENTO, null);
 
@@ -150,7 +346,9 @@ public class GestorBD extends SQLiteOpenHelper {
         cur.close();
         db.close();
     }
-    public void consultarDia(){
+
+    //METODO DE PRUEBA PARA MOSTRAR POR CONSOLA LOS DATOS DE UN DIA:
+    public void consultarDia() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cur = db.rawQuery("SELECT * FROM " + TABLA_DIA, null);
 
@@ -168,99 +366,4 @@ public class GestorBD extends SQLiteOpenHelper {
         cur.close();
         db.close();
     }
-
-    //METODO PARA INSERTAR LOS DATOS DEL USUARIO EN LA BD:
-    public boolean insertarUsuario(String nombre, int edad, String sexo, double altura, double peso, String tipoSangre) {
-        //Abrimos la BD en modo escritura
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        //Creamos un objeto ContentValues para almacenar los valores a insertar
-        //Esto evita la inyección de SQL!
-        ContentValues datos = new ContentValues();
-        datos.put(USUARIO_NOMBRE, nombre);
-        datos.put(USUARIO_EDAD, edad);
-        datos.put(USUARIO_SEXO, sexo);
-        datos.put(USUARIO_ALTURA, altura);
-        datos.put(USUARIO_PESO, peso);
-        datos.put(USUARIO_SANGRE, tipoSangre);
-
-        //Ejecutamos la inserción
-        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
-        long resultado = db.insert(TABLA_USUARIO, null, datos);
-
-        //Cerramos la BD
-        db.close();
-
-        //Devolvemos true si se ha insertado correctamente
-        return resultado != -1;
-    }
-    public boolean insertarNombreUsuario(String nombre) {
-        //Abrimos la BD en modo escritura
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        //Creamos un objeto ContentValues para almacenar los valores a insertar
-        //Esto evita la inyección de SQL!
-        ContentValues datos = new ContentValues();
-        datos.put(USUARIO_NOMBRE, nombre);
-
-        //Ejecutamos la inserción
-        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
-
-        long resultado = db.insert(TABLA_USUARIO, null, datos);
-
-        //Cerramos la BD
-        db.close();
-        //Devolvemos true si se ha insertado correctamente
-        return resultado != -1;
-    }
-
-    //METODO PARA INSERTAR UN EVENTO EN LA BD:
-    public boolean insertarEvento(String nombre, String descripcion, int seRepite, int idUsuario) {
-        //Abrimos la BD en modo escritura
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        //Creamos un objeto ContentValues para almacenar los valores a insertar
-        //Esto evita la inyección de SQL!
-        ContentValues datos = new ContentValues();
-        datos.put(EVENTO_NOMBRE, nombre);
-        datos.put(EVENTO_DESCRIPCION, descripcion);
-        datos.put(EVENTO_REPITE, seRepite);
-        datos.put(EVENTO_ID_USUARIO, idUsuario);
-
-        //Ejecutamos la inserción
-        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
-        long resultado = db.insert(TABLA_EVENTO, null, datos);
-
-        //Cerramos la BD
-        db.close();
-
-        //Devolvemos true si se ha insertado correctamente
-        return resultado != -1;
-    }
-
-    //METODO PARA INSERTAR UNA ACTIVIDAD EN LA BD:
-    public boolean insertarActividad(String nombre, String tiempo, String fecha, int idUsuario) {
-        //Abrimos la BD en modo escritura
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        //Creamos un objeto ContentValues para almacenar los valores a insertar
-        //Esto evita la inyección de SQL!
-        ContentValues datos = new ContentValues();
-        datos.put(ACTIVIDAD_NOMBRE, nombre);
-        datos.put(ACTIVIDAD_TIEMPO, tiempo);
-        datos.put(ACTIVIDAD_FECHA, fecha);
-        datos.put(ACTIVIDAD_ID_USUARIO, idUsuario);
-
-        //Ejecutamos la inserción
-        //Devuelve el ID del registro insertado. Si devuelve -1, hubo un error
-        long resultado = db.insert(TABLA_ACTIVIDAD, null, datos);
-
-        //Cerramos la BD
-        db.close();
-
-        //Devolvemos true si se ha insertado correctamente
-        return resultado != -1;
-    }
-
-
 }
