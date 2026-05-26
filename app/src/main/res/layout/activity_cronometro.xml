@@ -209,6 +209,7 @@
         app:itemTextColor="@color/nav_colors"
         app:menu="@menu/barra_navegacion" />
 
+
   </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
