@@ -12,7 +12,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import fend.crono.Cronometro;
+import FernandoDiaz.CalendarActivity;
+import FernandoDiaz.crono.Cronometro;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         boton3_main = findViewById(R.id.boton3_main);
 
         boton1_main.setOnClickListener(v -> {//Pasamos a la actividad calendario
-            pasarPantalla = new Intent(this, CalendarioActivity.class);
+            pasarPantalla = new Intent(this, CalendarActivity.class);
             startActivity(pasarPantalla);
 
         });
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     @Override //Método para crear el menú. Falta hacer el evento onClick en el item para que vaya a la actividad correspondiente.
     public boolean onCreateOptionsMenu (Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.encabezado, menu);
         return true;
     }
 }

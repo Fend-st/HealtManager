@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/circular_progress.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!-- Track (fondo del anillo) -->
+    <item android:id="@android:id/background">
+        <shape
+            android:shape="ring"
+            android:useLevel="false"
+            android:thickness="14dp">
+            <solid android:color="#E0F0F9" />
+        </shape>
+    </item>
+
+    <!-- Progreso (arco activo) -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape
+                android:shape="ring"
+                android:useLevel="false"
+                android:thickness="14dp">
+                <solid android:color="#4F0FE9" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

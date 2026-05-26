@@ -1,9 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.HealthManager" parent="Theme.Material3.DayNight">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Base application theme -->
+
+    <style name="Base.Theme.HealthManager"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
     </style>
 
-    <style name="Theme.HealthManager" parent="Base.Theme.HealthManager" />
+    <style name="Theme.HealthManager"
+        parent="Base.Theme.HealthManager" />
+
 </resources>
