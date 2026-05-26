@@ -1,1 +1,0 @@
-C:\Users\diazf\AndroidStudioProjects\HealtManager\app\build\intermediates\compiled_navigation_res\debug\compileDebugNavigationResources\navigation_nav_graph.xml.flat C:\Users\diazf\AndroidStudioProjects\HealtManager\app\build\intermediates\compiled_navigation_res\debug\compileDebugNavigationResources\navigation_nav_graph2.xml.flat 
