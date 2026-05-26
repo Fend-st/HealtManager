@@ -51,6 +51,11 @@
         </activity>
 
         <provider
+            android:name="com.prolificinteractive.materialcalendarview.MaterialCalendarViewInitProvider"
+            android:authorities="com.example.healthmanager.materialcalendarviewinitprovider"
+            android:enabled="true"
+            android:exported="false" />
+        <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.example.healthmanager.androidx-startup"
             android:exported="false" >

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.healthmanager.app-mergeDebugResources-44:/values-v23/values-v23.xml",
+            "outputFile": "com.example.healthmanager.app-mergeDebugResources-47:/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "C:\\Users\\jorge\\.gradle\\caches\\9.4.1\\transforms\\dc9398bd8b071616752dafd79ac11732\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",

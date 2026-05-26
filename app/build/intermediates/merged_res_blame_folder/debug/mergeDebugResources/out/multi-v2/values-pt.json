@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.healthmanager.app-mergeDebugResources-44:/values-pt/values-pt.xml",
+            "outputFile": "com.example.healthmanager.app-mergeDebugResources-47:/values-pt/values-pt.xml",
             "map": [
                 {
                     "source": "C:\\Users\\jorge\\.gradle\\caches\\9.4.1\\transforms\\790292ba9731f5ba51dda8955299972a\\transformed\\core-1.16.0\\res\\values-pt\\values-pt.xml",

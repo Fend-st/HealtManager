@@ -55,12 +55,15 @@
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Aquí irá el calendario"
-                    android:textColor="#C7D2FE" />
+                    app:mcv_firstDayOfWeek="sunday"
+                    app:mcv_selectionColor="#71C3EB"
+                    app:mcv_showOtherDates="all"
+                    app:mcv_showWeekDays="true"
+                    app:mcv_weekDayTextAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             </LinearLayout>
 

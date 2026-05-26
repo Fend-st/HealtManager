@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.healthmanager.app-mergeDebugResources-44:/values-h480dp-v13/values-h480dp-v13.xml",
+            "outputFile": "com.example.healthmanager.app-mergeDebugResources-47:/values-h480dp-v13/values-h480dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\jorge\\.gradle\\caches\\9.4.1\\transforms\\16027af73119f35e3be221ef136eac7d\\transformed\\material-1.13.0\\res\\values-h480dp-v13\\values-h480dp-v13.xml",
