@@ -43,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
         gbd.consultarEvento();
         gbd.consultarDia();*/
 
-        //Inicializamos los botones:
+        // todo MENSAJE DE FEND - estos este codigo apunta a botones que no existen
+        /*Inicializamos los botones:
         boton1_main = findViewById(R.id.boton1_main);
         boton2_main = findViewById(R.id.boton2_main);
-        boton3_main = findViewById(R.id.boton3_main);
+        boton3_main = findViewById(R.id.boton3_main); */
 
         boton1_main.setOnClickListener(v -> {//Pasamos a la actividad calendario
             pasarPantalla = new Intent(this, CalendarActivity.class);
