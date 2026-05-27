@@ -3,6 +3,11 @@ package FernandoDiaz.calendar;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+
+/***
+ * modelo de datos para los eventos
+ */
+
 public class Event implements Parcelable {
     private String id;
     private String title;

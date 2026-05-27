@@ -48,8 +48,9 @@ public class CalendarActivity extends AppCompatActivity implements
         });
     }
 
+    // muestra los popups de editar y crear evento
     private void showPopupMenu(View view, CalendarDay date) {
-        // Aplicamos el estilo personalizado
+        // estilo personalizado
         ContextThemeWrapper contextWrapper = new ContextThemeWrapper(this, R.style.CustomPopupMenu);
         PopupMenu popupMenu = new PopupMenu(contextWrapper, view);
         popupMenu.getMenuInflater().inflate(R.menu.calendar_popup_menu, popupMenu.getMenu());
@@ -91,14 +92,14 @@ public class CalendarActivity extends AppCompatActivity implements
 
     @Override
     public void onEventSaved(CalendarDay date, String title, String description) {
-        // En una implementación real, aquí decidirías si es un INSERT o un UPDATE
+        // En la implementación real, aquí se decide  si es un INSERT o un UPDATE
         saveEventToDatabase(date, title, description);
         calendarView.clearSelection();
     }
 
     @Override
     public void onEditEvent(Event event) {
-        // Al seleccionar un evento de la lista, abrimos el editor con sus datos
+        // Al seleccionar un evento de la lista, se abre el editor con sus datos
         showEventDialog(calendarView.getSelectedDate(), event.getTitle(), event.getDescription());
     }
 
