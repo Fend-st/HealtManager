@@ -1,5 +1,5 @@
 # Gradle files
-gradle/
+.gradle/
 build/
 
 # Local configuration file (SDK path, etc.)
@@ -21,13 +21,13 @@ gen/
 out/
 
 # Android Studio specific files
-idea/
+.idea/
 *.iml
-idea/workspace.xml
-idea/tasks.xml
-idea/libraries/
-idea/caches/
-idea/modules.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/libraries/
+.idea/caches/
+.idea/modules.xml
 
 # Keystore files (for signing)
 *.jks
@@ -46,7 +46,7 @@ obj/
 *.log
 
 # OS-specific files
-DS_Store
+.DS_Store
 Thumbs.db
 
 # Crashlytics/Fabric plugin files
