@@ -26,24 +26,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0f823e6-737d-4d00-8010-d425c4acb4f2" name="Changes" comment="Solo faltan 2 cosas">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/CalendarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/CalendarActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/crono/Cronometro.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/crono/Cronometro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/ResumenActividadActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/ResumenActividadActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_cronometro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_cronometro.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_resumen_actividad.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_resumen_actividad.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c0f823e6-737d-4d00-8010-d425c4acb4f2" name="Changes" comment="Solo falta 1 cosa" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,7 +75,7 @@
 }</component>
   <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\jorge\.gradle\wrapper\dists\gradle-9.4.1-bin\arn2x92ynaizyzdaamcbpbhtj\gradle-9.4.1" javaHome="C:\Program Files\Android\Android Studio\jbr" gradleVersion="9.4.1" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="_Designer_Tab" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -219,12 +202,21 @@
       <option name="project" value="LOCAL" />
       <updated>1779906891649</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Solo falta 1 cosa">
+      <option name="closed" value="true" />
+      <created>1779908281548</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1779908281548</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Solo faltan 2 cosas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Solo faltan 2 cosas" />
+    <MESSAGE value="Solo falta 1 cosa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solo falta 1 cosa" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
