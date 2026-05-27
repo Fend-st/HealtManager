@@ -218,11 +218,11 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/nav_redonda"
+        android:background="@drawable/nav_redondeada"
         app:itemIconTint="@color/nav_color"
         app:itemTextColor="@color/nav_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/barra_navegadr" />
+        app:menu="@menu/barra_navegacion" />
 </androidx.constraintlayout.widget.ConstraintLayout>
