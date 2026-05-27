@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fend.crono.Cronometro;
+import FernandoDiaz.crono.Cronometro;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
