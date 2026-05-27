@@ -63,18 +63,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text=".........."
+                    android:text="texto1_RA"
                     android:textColor="#1D1D1D"
                     android:textSize="30sp" />
 
                 <ProgressBar
-                    android:id="@+id/progressDormir_RA"
+                    android:id="@+id/progressCaminar_RA"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="16dp"
-                    android:max="24"
+                    android:max="86400"
                     android:progress="8"
                     android:progressTint="#F44336"
                     android:scaleY="9" />
@@ -84,20 +84,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="TextView"
+                    android:text="texto2_RA"
                     android:textColor="#1D1D1D"
                     android:textSize="30sp" />
 
                 <ProgressBar
-                    android:id="@+id/progressTrabajar_RA"
+                    android:id="@+id/progressCorrer_RA"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="16dp"
-                    android:max="24"
+                    android:max="86400"
                     android:progress="8"
-                    android:progressTint="#2196F3"
+                    android:progressTint="#9C27B0"
                     android:scaleY="9" />
 
                 <TextView
@@ -105,20 +105,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="TextView"
+                    android:text="texto3_RA"
                     android:textColor="#1D1D1D"
                     android:textSize="30sp" />
 
                 <ProgressBar
-                    android:id="@+id/progressEjercicio1_RA"
+                    android:id="@+id/progressGimnasio_RA"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="16dp"
-                    android:max="24"
+                    android:max="86400"
                     android:progress="2"
-                    android:progressTint="#4CAF50"
+                    android:progressTint="#FFEB3B"
                     android:scaleY="9" />
 
                 <TextView
@@ -126,20 +126,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="TextView"
+                    android:text="texto4_RA"
                     android:textColor="#1D1D1D"
                     android:textSize="30sp" />
 
                 <ProgressBar
-                    android:id="@+id/progressEjercicio2_RA"
+                    android:id="@+id/progressCiclismo_RA"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="16dp"
-                    android:max="24"
+                    android:max="86400"
                     android:progress="2"
-                    android:progressTint="#4CAF50"
+                    android:progressTint="#FF9800"
                     android:scaleY="9" />
 
                 <TextView
@@ -147,24 +147,38 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="TextView"
+                    android:text="texto5_RA"
                     android:textColor="#1D1D1D"
                     android:textSize="30sp" />
 
                 <ProgressBar
-                    android:id="@+id/progressEjercicio3_RA"
+                    android:id="@+id/progressYoga_RA"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="16dp"
-                    android:max="24"
+                    android:max="86400"
                     android:progress="2"
-                    android:progressTint="#4CAF50"
+                    android:progressTint="#00BCD4"
                     android:scaleY="9" />
 
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/nav_redondeada"
+        app:itemIconTint="@color/nav_colors"
+        app:itemTextColor="@color/nav_colors"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:menu="@menu/barra_navegacion" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

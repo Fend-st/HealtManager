@@ -6,14 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="FernandoDiaz.crono.Cronometro">
+
+  <!-- CONTENEDOR PRINCIPAL -->
   <LinearLayout
+      android:id="@+id/mainContent"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical"
       android:background="#71C3EB"
       android:padding="16dp">
 
-    <!-- Título CRONOMETRO  -->
+    <!-- Título CRONOMETRO -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
@@ -26,25 +29,24 @@
         android:paddingTop="16dp"
         android:paddingBottom="16dp" />
 
-    <!-- Contenedor redondeado  -->
+    <!-- Contenedor redondeado -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
         android:background="@drawable/rounded_container"
-        android:padding="24dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-      <!-- Sección del cronómetro: barra circular y el  tiempo -->
+      <!-- Sección del cronómetro -->
       <FrameLayout
           android:layout_width="220dp"
           android:layout_height="220dp"
           android:layout_gravity="center_horizontal"
           android:layout_marginTop="16dp"
-          android:layout_marginBottom="24dp">
+          android:layout_marginBottom="12dp">
 
-        <!-- Barra de progreso circular todo/ nota para nandus: modifica "progress" para hacer avanzar la barra  -->
         <ProgressBar
             android:id="@+id/circularProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
@@ -57,128 +59,118 @@
             android:rotation="-90"
             android:rotationX="49" />
 
-        <!-- tiempo dentro de la barra circular  -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-          <!-- todo/ nota para nandus: modifica "text" para cambiar los numeros -->
+            android:gravity="center"
+            android:orientation="vertical">
+
           <TextView
               android:id="@+id/tvTimer"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="00:00:00"
+              android:textColor="#1D1D1D"
               android:textSize="32sp"
-              android:textStyle="bold"
-              android:textColor="#1D1D1D" />
+              android:textStyle="bold" />
 
           <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:layout_marginTop="4dp"
               android:text="horas : min : seg"
-              android:textSize="12sp"
               android:textColor="#888888"
-              android:layout_marginTop="4dp" />
+              android:textSize="12sp" />
 
         </LinearLayout>
       </FrameLayout>
 
-      <!-- Divisor para quedar mas ordenado -->
       <View
           android:layout_width="match_parent"
           android:layout_height="1dp"
-          android:background="#E0E0E0"
-          android:layout_marginBottom="20dp" />
+          android:layout_marginBottom="20dp"
+          android:background="#E0E0E0" />
 
       <!-- botones de actividad -->
-      <!-- todo/ nota para nandus: los numeros son place holders para lo que serian los iconitos  -->
       <LinearLayout
           android:id="@+id/llActivityButtons"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="horizontal"
           android:gravity="center"
+          android:orientation="horizontal"
           android:weightSum="5">
 
-        <!-- Botón 1 - Caminar -->
         <ImageButton
             android:id="@+id/btnActivity1"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="1"
             android:layout_margin="4dp"
-            android:src="@drawable/icon_walk"
-            android:scaleType="fitCenter"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Caminar"
-            android:padding="4dp" />
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_walk" />
 
-        <!-- Botón 2 - Correr -->
         <ImageButton
             android:id="@+id/btnActivity2"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="1"
             android:layout_margin="4dp"
-            android:src="@drawable/icon_run"
-            android:scaleType="fitCenter"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Correr"
-            android:padding="4dp" />
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_run" />
 
-        <!-- Botón 3 - Gimnasio -->
         <ImageButton
             android:id="@+id/btnActivity3"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="1"
             android:layout_margin="4dp"
-            android:src="@drawable/icon_gym"
-            android:scaleType="fitCenter"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Gimnasio"
-            android:padding="4dp" />
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_gym" />
 
-        <!-- Botón 4 - Ciclismo -->
         <ImageButton
             android:id="@+id/btnActivity4"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="1"
             android:layout_margin="4dp"
-            android:src="@drawable/icon_bike"
-            android:scaleType="fitCenter"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Ciclismo"
-            android:padding="4dp" />
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_bike" />
 
-        <!-- Botón 5 - Yoga -->
         <ImageButton
             android:id="@+id/btnActivity5"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="1"
             android:layout_margin="4dp"
-            android:src="@drawable/icon_yoga"
-            android:scaleType="fitCenter"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Yoga"
-            android:padding="4dp" />
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_yoga" />
 
       </LinearLayout>
 
-      <!-- texto que enseña que actividad se esta registrando -->
-      <!-- recuerda hacerlo invisible cuando el temporizador este parado (simplemente meterle ningun texto)-->
       <TextView
           android:id="@+id/tvCurrentActivity"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="placeholder ACTIVIDAD ACTUAL"
-          android:textSize="13sp"
-          android:textColor="#444444"
+          android:layout_marginTop="16dp"
           android:gravity="center"
-          android:layout_marginTop="16dp" />
+          android:text="placeholder ACTIVIDAD ACTUAL"
+          android:textColor="#444444"
+          android:textSize="13sp" />
 
       <Button
           android:id="@+id/btnActivity6"
@@ -206,5 +198,18 @@
 
     </LinearLayout>
 
+    <!-- MENÚ NAVEGACIÓN -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/nav_redondeada"
+        app:itemIconTint="@color/nav_colors"
+        app:itemTextColor="@color/nav_colors"
+        app:menu="@menu/barra_navegacion" />
+
+
   </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
