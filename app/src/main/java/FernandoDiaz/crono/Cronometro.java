@@ -19,14 +19,13 @@ import com.example.healthmanager.GestorBD;
 import com.example.healthmanager.MainActivity;
 import com.example.healthmanager.R;
 import com.example.healthmanager.ResumenActividadActivity;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import FernandoDiaz.CalendarActivity;
+import FernandoDiaz.calendar.CalendarActivity;
 
 public class Cronometro extends AppCompatActivity {
     protected ProgressBar circularProgressBar;
@@ -45,6 +44,7 @@ public class Cronometro extends AppCompatActivity {
     protected boolean isPlaying = false;
     protected Handler handler;
     protected String nombreActividad = "";
+    protected BottomNavigationView menuNavegacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,26 +55,6 @@ public class Cronometro extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-        });
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.nav_timer);
-
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.nav_home) {
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            } else if (itemId == R.id.nav_calendar) {
-                startActivity(new Intent(this, CalendarActivity.class));
-                return true;
-            } else if (itemId == R.id.nav_timer) {
-                return true;
-            } else if (itemId == R.id.nav_summary) {
-                startActivity(new Intent(this, ResumenActividadActivity.class));
-                return true;
-            }
-            return false;
         });
 
         //Inicializamos los elementos:
@@ -89,7 +69,31 @@ public class Cronometro extends AppCompatActivity {
         btnActivity5 = findViewById(R.id.btnActivity5);
         btnActivity6 = findViewById(R.id.btnActivity6);
         btnActivity7 = findViewById(R.id.btnActivity7);
+        menuNavegacion = findViewById(R.id.bottom_navigation);
         handler = new Handler();
+
+        //MENU DE NAVEGACIÓN
+        //Marcamos el item en el que nos encontramos (Cronometro en este caso)
+        menuNavegacion.setSelectedItemId(R.id.nav_timer);
+
+        //Evento para cambiar de actividad segun el boton que pulsemos
+        menuNavegacion.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.nav_home) {
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_calendar) {
+                startActivity(new Intent(this, CalendarActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_timer) {
+                return true;
+            } else if (itemId == R.id.nav_summary) {
+                startActivity(new Intent(this, ResumenActividadActivity.class));
+                return true;
+            }
+            return false;
+        });
 
         //Inicializamos los valores:
         tvTimer.setText("00:00:00");
@@ -228,13 +232,13 @@ public class Cronometro extends AppCompatActivity {
         int segs = segundosTotales % 60;
         return String.format(Locale.getDefault(), "%02d:%02d:%02d", horas, minutos, segs);
     }
-    /*
+
     public static String obtenerTextoActividad(int idActividad) {
         if (idActividad == 0) return "ACTIVIDAD ACTUAL: NINGUNA";
         if (idActividad >= 1 && idActividad <= 5) {
             return "ACTIVIDAD ACTUAL: " + idActividad;
         }
         return "ACTIVIDAD ACTUAL: NINGUNA";
-    }*/
+    }
 
 }
