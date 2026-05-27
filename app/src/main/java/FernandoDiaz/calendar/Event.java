@@ -1,4 +1,4 @@
-package FernandoDiaz;
+package FernandoDiaz.calendar;
 
 import android.os.Parcel;
 import android.os.Parcelable;

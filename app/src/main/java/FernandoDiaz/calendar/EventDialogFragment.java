@@ -1,4 +1,4 @@
-package FernandoDiaz;
+package FernandoDiaz.calendar;
 
 import android.app.Dialog;
 import android.os.Bundle;

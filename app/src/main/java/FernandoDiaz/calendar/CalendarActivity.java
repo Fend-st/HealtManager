@@ -1,4 +1,4 @@
-package FernandoDiaz;
+package FernandoDiaz.calendar;
 
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
@@ -20,7 +20,7 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 public class CalendarActivity extends AppCompatActivity implements 
-        EventDialogFragment.OnEventSavedListener, 
+        EventDialogFragment.OnEventSavedListener,
         EventListDialogFragment.OnEventActionListener {
 
     private MaterialCalendarView calendarView;

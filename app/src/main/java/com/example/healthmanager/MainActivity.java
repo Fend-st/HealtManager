@@ -12,7 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import FernandoDiaz.CalendarActivity;
+import FernandoDiaz.calendar.CalendarActivity;
 import FernandoDiaz.crono.Cronometro;
 
 public class MainActivity extends AppCompatActivity {

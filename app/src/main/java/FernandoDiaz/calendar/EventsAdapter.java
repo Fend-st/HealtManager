@@ -1,4 +1,4 @@
-package FernandoDiaz;
+package FernandoDiaz.calendar;
 
 import android.view.LayoutInflater;
 import android.view.View;
