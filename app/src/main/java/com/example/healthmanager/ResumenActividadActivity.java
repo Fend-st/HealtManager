@@ -1,8 +1,6 @@
 package com.example.healthmanager;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.database.Cursor;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -13,14 +11,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import FernandoDiaz.CalendarActivity;
+import FernandoDiaz.crono.Cronometro;
 
 public class ResumenActividadActivity extends AppCompatActivity {
 
-    protected TextView texto1_RA, texto2_RA, texto3_RA, texto4_RA, texto5_RA;
-    protected ProgressBar progressCaminar_RA, progressCorrer_RA, progressGimnasio_RA, progressCiclismo_RA, progressYoga_RA;
+    protected TextView texto1_RA;
+    protected TextView texto2_RA;
+    protected TextView texto3_RA;
+    protected TextView texto4_RA;
+    protected TextView texto5_RA;
+    protected ProgressBar progressDormir_RA;
+    protected ProgressBar progressTrabajar_RA;
+    protected ProgressBar progressEjercicio1_RA;
+    protected ProgressBar progressEjercicio2_RA;
+    protected ProgressBar progressEjercicio3_RA;
     protected GestorBD gbd;
 
     @Override
@@ -28,88 +35,52 @@ public class ResumenActividadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_resumen_actividad);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        setTitle("Resumen Actividad");
 
-        // 1. Inicializar vistas
-        inicializarVistas();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_summary);
 
-        // 2. Instanciar BD
-        gbd = new GestorBD(this);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_home) {
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_calendar) {
+                startActivity(new Intent(this, CalendarActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_timer) {
+                startActivity(new Intent(this, Cronometro.class));
+                return true;
+            } else if (itemId == R.id.nav_summary) {
+                return true;
+            }
+            return false;
+        });
 
-        // 3. Comprobar si hay que poner a 0 (reinicio diario)
-        comprobarReinicioDiario();
-
-        // 4. Cargar los segundos actuales de la BD
-        cargarDatosActividad();
-    }
-
-    private void inicializarVistas() {
+        //Inicializamos los botones:
         texto1_RA = findViewById(R.id.texto1_RA);
         texto2_RA = findViewById(R.id.texto2_RA);
         texto3_RA = findViewById(R.id.texto3_RA);
         texto4_RA = findViewById(R.id.texto4_RA);
         texto5_RA = findViewById(R.id.texto5_RA);
-        progressCaminar_RA = findViewById(R.id.progressCaminar_RA);
-        progressCorrer_RA = findViewById(R.id.progressCorrer_RA);
-        progressGimnasio_RA = findViewById(R.id.progressGimnasio_RA);
-        progressCiclismo_RA = findViewById(R.id.progressCiclismo_RA);
-        progressYoga_RA = findViewById(R.id.progressYoga_RA);
-    }
+        progressDormir_RA = findViewById(R.id.progressDormir_RA);
+        progressTrabajar_RA = findViewById(R.id.progressTrabajar_RA);
+        progressEjercicio1_RA = findViewById(R.id.progressEjercicio1_RA);
+        progressEjercicio2_RA = findViewById(R.id.progressEjercicio2_RA);
+        progressEjercicio3_RA = findViewById(R.id.progressEjercicio3_RA);
 
-    private void comprobarReinicioDiario() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        String fechaHoy = sdf.format(new Date());
+        //Instanciamos la BD:
+        gbd = new GestorBD(this);
 
-        SharedPreferences prefs = getSharedPreferences("ControlDiario", Context.MODE_PRIVATE);
-        String ultimaFecha = prefs.getString("ultima_fecha_uso", "");
+        //RECOGER NOMBRE DE ACTIVIDAD:
+        /*String nombreActividad = gbd.consultarNombreActividad();
+        texto1_RA.setText(nombreActividad);*/
 
-        if (!fechaHoy.equals(ultimaFecha)) {
-            // Si el día ha cambiado, llamamos al método de tu GestorBD que pone los segundos a 0
-            gbd.reiniciarSegundosActividades();
-            // Actualizamos la fecha de referencia
-            prefs.edit().putString("ultima_fecha_uso", fechaHoy).apply();
-        }
-    }
 
-    private void cargarDatosActividad() {
-        Cursor cursor = gbd.obtenerActividad(); // Usamos tu método que devuelve todo
-
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                // Sacamos el nombre y el tiempo (en segundos) de la fila actual
-                String nombre = cursor.getString(cursor.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_NOMBRE));
-                int segundos = cursor.getInt(cursor.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_TIEMPO));
-
-                // Asignamos según el nombre de la actividad
-                switch (nombre) {
-                    case "Caminar":
-                        texto1_RA.setText("Caminar: " + segundos + " seg");
-                        progressCaminar_RA.setProgress(segundos);
-                        break;
-                    case "Correr":
-                        texto2_RA.setText("Correr: " + segundos + " seg");
-                        progressCorrer_RA.setProgress(segundos);
-                        break;
-                    case "Gimnasio":
-                        texto3_RA.setText("Gimnasio: " + segundos + " seg");
-                        progressGimnasio_RA.setProgress(segundos);
-                        break;
-                    case "Ciclismo":
-                        texto4_RA.setText("Ciclismo: " + segundos + " seg");
-                        progressCiclismo_RA.setProgress(segundos);
-                        break;
-                    case "Yoga":
-                        texto5_RA.setText("Yoga: " + segundos + " seg");
-                        progressYoga_RA.setProgress(segundos);
-                        break;
-                }
-            }
-            cursor.close();
-        }
     }
 }

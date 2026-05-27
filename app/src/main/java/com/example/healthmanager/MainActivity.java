@@ -1,17 +1,24 @@
 package com.example.healthmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
 import android.database.Cursor;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import FernandoDiaz.CalendarActivity;
+import FernandoDiaz.crono.Cronometro;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
         curUsuario.close();
 
+        ProgressBar progressDormir = findViewById(R.id.progressDormirMain);
+        ProgressBar progressEjercicio = findViewById(R.id.progressEjercicioMain);
+
+        // Por ahora dejamos valores fijos como en la pestaña resumen o podrías consultarlos de la BD
+        progressDormir.setProgress(8);
+        progressEjercicio.setProgress(6);
+
         viewPagerTips = findViewById(R.id.viewPagerTips);
 
         List<TipModel> tipsList = new ArrayList<>();
@@ -100,6 +114,26 @@ public class MainActivity extends AppCompatActivity {
         };
 
         sliderHandler.postDelayed(sliderRunnable, 3000);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_home) {
+                return true;
+            } else if (itemId == R.id.nav_calendar) {
+                startActivity(new Intent(this, CalendarActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_timer) {
+                startActivity(new Intent(this, Cronometro.class));
+                return true;
+            } else if (itemId == R.id.nav_summary) {
+                startActivity(new Intent(this, ResumenActividadActivity.class));
+                return true;
+            }
+            return false;
+        });
 
     }
 
