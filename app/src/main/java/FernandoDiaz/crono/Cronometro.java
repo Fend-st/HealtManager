@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import FernandoDiaz.CalendarActivity;
+import FernandoDiaz.calendar.CalendarActivity;
 
 public class Cronometro extends AppCompatActivity {
     protected ProgressBar circularProgressBar;
