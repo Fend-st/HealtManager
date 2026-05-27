@@ -4,10 +4,15 @@
 
     <style name="Base.Theme.HealthManager"
         parent="Theme.Material3.DayNight.NoActionBar">
-
+        <!-- Customize your light theme here. -->
     </style>
 
     <style name="Theme.HealthManager"
         parent="Base.Theme.HealthManager" />
+
+    <!-- Estilo para el PopupMenu Azul y Redondeado -->
+    <style name="CustomPopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@drawable/rounded_container</item>
+    </style>
 
 </resources>
