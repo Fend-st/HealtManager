@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthManager">
         <activity
-            android:name="FernandoDiaz.CalendarActivity"
+            android:name="FernandoDiaz.calendar.CalendarActivity"
             android:exported="true" />
         <activity
             android:name="FernandoDiaz.crono.Cronometro"
