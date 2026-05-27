@@ -1,138 +1,142 @@
 [
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/drawable_nav_redonda.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/drawable/nav_redonda.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\drawable_tip_sleep.jpg.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\drawable\\tip_sleep.jpg"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/drawable_rounded_container.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/drawable/rounded_container.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\drawable_rounded_container.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\drawable\\rounded_container.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\drawable_tip_walk.jpg.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\drawable\\tip_walk.jpg"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/drawable_circular_progress.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/drawable/circular_progress.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\layout_activity_cronometro.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\layout\\activity_cronometro.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/layout_activity_resumen_actividad.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/layout/activity_resumen_actividad.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\drawable_fondo_redondeado.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\drawable\\fondo_redondeado.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/drawable_tip_food.jpg.flat",
-        "source": "com.example.healthmanager.app-main-51:/drawable/tip_food.jpg"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\layout_activity_resumen_actividad.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\layout\\activity_resumen_actividad.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/layout_item_tip.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/layout/item_tip.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\menu_menu_main.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\menu\\menu_main.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/drawable_fondo_redondeado.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/drawable/fondo_redondeado.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/layout_activity_calendario.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/layout/activity_calendario.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/menu_bottom_menu.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/menu/bottom_menu.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\layout_activity_perfil_usuario.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\layout\\activity_perfil_usuario.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\menu_barra_navegadr.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\menu\\barra_navegadr.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\layout_activity_calendario.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\layout\\activity_calendario.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/menu_menu_main.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/menu/menu_main.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\drawable_tip_food.jpg.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\drawable\\tip_food.jpg"
+    },
+    {
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\layout_activity_formulario.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\layout\\activity_formulario.xml"
     },
     {
         "merged": "com.example.healthmanager.app-debug-49:/layout_activity_main.xml.flat",
         "source": "com.example.healthmanager.app-main-51:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/layout_activity_formulario.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/layout/activity_formulario.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/drawable_tip_sleep.jpg.flat",
-        "source": "com.example.healthmanager.app-main-51:/drawable/tip_sleep.jpg"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\layout_item_tip.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\layout\\item_tip.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/color_nav_color.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/color/nav_color.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/menu_barra_navegadr.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/menu/barra_navegadr.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\menu_bottom_menu.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\menu\\bottom_menu.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/layout_activity_perfil_usuario.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/layout/activity_perfil_usuario.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/xml_backup_rules.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\drawable_nav_redonda.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\drawable\\nav_redonda.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/drawable_tip_walk.jpg.flat",
-        "source": "com.example.healthmanager.app-main-51:/drawable/tip_walk.jpg"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\drawable_circular_progress.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\drawable\\circular_progress.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/layout_activity_cronometro.xml.flat",
-        "source": "com.example.healthmanager.app-main-51:/layout/activity_cronometro.xml"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\color_nav_color.xml.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\color\\nav_color.xml"
     },
     {
-        "merged": "com.example.healthmanager.app-debug-49:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.healthmanager.app-main-51:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-debug-49:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jorge\\.gradle\\daemon\\9.4.1\\com.example.healthmanager.app-main-51:\\mipmap-mdpi\\ic_launcher_round.webp"
     }
 ]

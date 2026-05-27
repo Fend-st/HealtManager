@@ -79,7 +79,11 @@ int id texto1_perfil 0x0
 int id texto1_resumen 0x0
 int id texto2_perfil 0x0
 int id titulo2 0x0
+int id tvAltura 0x0
 int id tvCurrentActivity 0x0
+int id tvIMC 0x0
+int id tvNombre 0x0
+int id tvPeso 0x0
 int id tvTimer 0x0
 int id tvTitle 0x0
 int id viewPagerTips 0x0

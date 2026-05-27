@@ -262,5 +262,14 @@ public class GestorBD extends SQLiteOpenHelper {
         return resultado != -1;
     }
 
+    //METODO PARA OBTENER EL USUARIO
+    public Cursor obtenerUsuario() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        return db.rawQuery(
+                "SELECT * FROM " + TABLA_USUARIO + " LIMIT 1",
+                null
+        );
+    }
 
 }

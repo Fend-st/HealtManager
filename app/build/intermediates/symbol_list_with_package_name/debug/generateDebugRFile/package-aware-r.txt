@@ -80,7 +80,11 @@ id texto1_perfil
 id texto1_resumen
 id texto2_perfil
 id titulo2
+id tvAltura
 id tvCurrentActivity
+id tvIMC
+id tvNombre
+id tvPeso
 id tvTimer
 id tvTitle
 id viewPagerTips
