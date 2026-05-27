@@ -55,12 +55,15 @@
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Aquí irá el calendario"
-                    android:textColor="#C7D2FE" />
+                    app:mcv_firstDayOfWeek="sunday"
+                    app:mcv_selectionColor="#71C3EB"
+                    app:mcv_showOtherDates="all"
+                    app:mcv_showWeekDays="true"
+                    app:mcv_weekDayTextAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             </LinearLayout>
 
@@ -87,19 +90,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="• beber agua"
+                    android:text="• Beber agua"
                     android:textColor="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• caminar 20 min"
+                    android:text="• Caminar 20 min"
                     android:textColor="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• dormir 8h"
+                    android:text="• Dormir 8h"
                     android:textColor="#FFFFFF" />
 
             </LinearLayout>
@@ -153,6 +156,38 @@
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Nombre:"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvPeso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Peso:"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvAltura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Altura:"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvIMC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="IMC:"
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
 

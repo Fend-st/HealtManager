@@ -19,7 +19,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        // resolucuon de dependencias para material calendar
         maven { url = uri("https://jitpack.io") }
     }
 }

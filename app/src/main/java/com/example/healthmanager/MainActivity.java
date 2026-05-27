@@ -1,76 +1,113 @@
 package com.example.healthmanager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.widget.Button;
+import android.os.Handler;
+import android.os.Looper;
 
-import androidx.activity.EdgeToEdge;
+import android.database.Cursor;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager2.widget.ViewPager2;
 
-import FernandoDiaz.CalendarActivity;
-import FernandoDiaz.crono.Cronometro;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    protected Intent pasarPantalla;
-    protected Button boton1_main;
-    protected Button boton2_main;
-    protected Button boton3_main;
-    //protected GestorBD gbd;
+    ViewPager2 viewPagerTips;
+
+    GestorBD gbd;
+
+    Handler sliderHandler = new Handler(Looper.getMainLooper());
+
+    Runnable sliderRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        setTitle("HealthManager");
 
-        //Instanciamos la BD:
-        /*gbd = new GestorBD(this);
+        gbd = new GestorBD(this);
 
-        //LLAMAMOS A LOS MÉTODOS DE PRUEBA:
-        gbd.consultarUsuario();
-        gbd.consultarEvento();
-        gbd.consultarDia();*/
+        TextView tvNombre = findViewById(R.id.tvNombre);
+        TextView tvPeso = findViewById(R.id.tvPeso);
+        TextView tvAltura = findViewById(R.id.tvAltura);
+        TextView tvIMC = findViewById(R.id.tvIMC);
 
-        // todo MENSAJE DE FEND - estos este codigo apunta a botones que no existen
-        /*Inicializamos los botones:
-        boton1_main = findViewById(R.id.boton1_main);
-        boton2_main = findViewById(R.id.boton2_main);
-        boton3_main = findViewById(R.id.boton3_main); */
+        Cursor curUsuario = gbd.obtenerUsuario();
 
-        boton1_main.setOnClickListener(v -> {//Pasamos a la actividad calendario
-            pasarPantalla = new Intent(this, CalendarActivity.class);
-            startActivity(pasarPantalla);
+        if (curUsuario.moveToFirst()) {
 
-        });
-        boton2_main.setOnClickListener(v -> {//Pasamos a la actividad cronometro
-            pasarPantalla = new Intent(this, Cronometro.class);
-            startActivity(pasarPantalla);
+            String nombre = curUsuario.getString(
+                    curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_NOMBRE));
 
-        });
+            double peso = curUsuario.getDouble(
+                    curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_PESO));
 
-        boton3_main.setOnClickListener(v -> {//Pasamos a la actividad registro
-            pasarPantalla = new Intent(this, ResumenActividadActivity.class);
-            startActivity(pasarPantalla);
+            double altura = curUsuario.getDouble(
+                    curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_ALTURA));
 
-        });
+            double alturaEnMetros = altura / 100;
+
+            double imc = peso / (alturaEnMetros * alturaEnMetros);
+
+            tvNombre.setText("Nombre: " + nombre);
+            tvPeso.setText("Peso: " + peso + " kg");
+            tvAltura.setText("Altura: " + altura + " cm");
+            tvIMC.setText("IMC: " + String.format("%.2f", imc));
+        }
+
+        curUsuario.close();
+
+        viewPagerTips = findViewById(R.id.viewPagerTips);
+
+        List<TipModel> tipsList = new ArrayList<>();
+
+        tipsList.add(new TipModel(
+                "Recuerda dormir 8h",
+                R.drawable.tip_sleep
+        ));
+
+        tipsList.add(new TipModel(
+                "Consume alimentos naturales",
+                R.drawable.tip_food
+        ));
+
+        tipsList.add(new TipModel(
+                "Reduce el sedentarismo",
+                R.drawable.tip_walk
+        ));
+
+        TipsAdapter adapter = new TipsAdapter(tipsList);
+
+        viewPagerTips.setAdapter(adapter);
+
+        sliderRunnable = new Runnable() {
+            @Override
+            public void run() {
+
+                int nextItem = viewPagerTips.getCurrentItem() + 1;
+
+                if (nextItem >= tipsList.size()) {
+                    nextItem = 0;
+                }
+
+                viewPagerTips.setCurrentItem(nextItem, true);
+
+                sliderHandler.postDelayed(this, 3000);
+            }
+        };
+
+        sliderHandler.postDelayed(sliderRunnable, 3000);
 
     }
-    @Override //Método para crear el menú. Falta hacer el evento onClick en el item para que vaya a la actividad correspondiente.
-    public boolean onCreateOptionsMenu (Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.encabezado, menu);
-        return true;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        sliderHandler.removeCallbacks(sliderRunnable);
     }
+
 }
