@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import FernandoDiaz.CalendarActivity;
+import FernandoDiaz.calendar.CalendarActivity;
 import FernandoDiaz.crono.Cronometro;
 
 public class ResumenActividadActivity extends AppCompatActivity {
