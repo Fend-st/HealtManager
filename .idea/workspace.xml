@@ -5,6 +5,16 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_calendar.xml">
+        <config>
+          <theme>@style/Theme.HealthManager</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_cronometro.xml">
+        <config>
+          <theme>@style/Theme.HealthManager</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
         <config>
           <theme>@style/Theme.HealthManager</theme>
@@ -16,7 +26,24 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0f823e6-737d-4d00-8010-d425c4acb4f2" name="Changes" comment="Solo faltan 2 cosas" />
+    <list default="true" id="c0f823e6-737d-4d00-8010-d425c4acb4f2" name="Changes" comment="Solo faltan 2 cosas">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/e4e71580608e1da5c81e51c64506b9a966b6c7fc986c4d4359c7905505708d61_7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/CalendarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/CalendarActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/crono/Cronometro.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/crono/Cronometro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/ResumenActividadActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/ResumenActividadActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_cronometro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_cronometro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_resumen_actividad.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_resumen_actividad.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +52,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LocalEmulator::path=C:\Users\jorge\.android\avd\Medium_Phone.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LocalEmulator::path=C:\Users\jorge\.android\avd\Pixel_9a.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -65,7 +92,7 @@
 }</component>
   <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\jorge\.gradle\wrapper\dists\gradle-9.4.1-bin\arn2x92ynaizyzdaamcbpbhtj\gradle-9.4.1" javaHome="C:\Program Files\Android\Android Studio\jbr" gradleVersion="9.4.1" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="_Designer_Tab" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -76,21 +103,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Jorge-main-activity&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "#27 on Jorge-main-activity",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "com.android.studio.ml.bot.mainConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="HealthManager.app" />
@@ -183,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779871274340</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Solo faltan 2 cosas">
+      <option name="closed" value="true" />
+      <created>1779906891649</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1779906891649</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -195,12 +231,12 @@
       <map>
         <entry key="com.example.healthmanager">
           <value>
-            <CheckInfo lastCheckTimestamp="1779805945778" />
+            <CheckInfo lastCheckTimestamp="1779906934932" />
           </value>
         </entry>
         <entry key="com.example.healthmanager.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1779805945781" />
+            <CheckInfo lastCheckTimestamp="1779906934937" />
           </value>
         </entry>
       </map>

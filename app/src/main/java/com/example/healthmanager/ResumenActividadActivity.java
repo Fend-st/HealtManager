@@ -1,5 +1,6 @@
 package com.example.healthmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -9,6 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import FernandoDiaz.CalendarActivity;
+import FernandoDiaz.crono.Cronometro;
 
 public class ResumenActividadActivity extends AppCompatActivity {
 
@@ -35,6 +41,26 @@ public class ResumenActividadActivity extends AppCompatActivity {
             return insets;
         });
         setTitle("Resumen Actividad");
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_summary);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_home) {
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_calendar) {
+                startActivity(new Intent(this, CalendarActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_timer) {
+                startActivity(new Intent(this, Cronometro.class));
+                return true;
+            } else if (itemId == R.id.nav_summary) {
+                return true;
+            }
+            return false;
+        });
 
         //Inicializamos los botones:
         texto1_RA = findViewById(R.id.texto1_RA);
