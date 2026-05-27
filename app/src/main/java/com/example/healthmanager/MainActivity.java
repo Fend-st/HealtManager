@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-import FernandoDiaz.CalendarActivity;
+import FernandoDiaz.calendar.CalendarActivity;
 import FernandoDiaz.crono.Cronometro;
 
 public class MainActivity extends AppCompatActivity {
