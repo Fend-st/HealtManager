@@ -82,14 +82,17 @@ public class Cronometro extends AppCompatActivity {
 
             if (itemId == R.id.nav_home) {
                 startActivity(new Intent(this, MainActivity.class));
+                finish();
                 return true;
             } else if (itemId == R.id.nav_calendar) {
                 startActivity(new Intent(this, CalendarActivity.class));
+                finish();
                 return true;
             } else if (itemId == R.id.nav_timer) {
                 return true;
             } else if (itemId == R.id.nav_summary) {
                 startActivity(new Intent(this, ResumenActividadActivity.class));
+                finish();
                 return true;
             }
             return false;

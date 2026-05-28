@@ -1,6 +1,7 @@
 package com.example.healthmanager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,9 +14,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import FernandoDiaz.calendar.CalendarActivity;
+import FernandoDiaz.crono.Cronometro;
 
 public class ResumenActividadActivity extends AppCompatActivity {
 
@@ -46,6 +52,30 @@ public class ResumenActividadActivity extends AppCompatActivity {
 
         // 4. Cargar los segundos actuales de la BD
         cargarDatosActividad();
+
+        // 5. Configurar barra de navegación
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_summary);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_home) {
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.nav_calendar) {
+                startActivity(new Intent(this, CalendarActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.nav_timer) {
+                startActivity(new Intent(this, Cronometro.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.nav_summary) {
+                return true;
+            }
+            return false;
+        });
     }
 
     private void inicializarVistas() {
