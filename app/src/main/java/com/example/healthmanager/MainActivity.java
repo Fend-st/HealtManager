@@ -19,6 +19,7 @@ import java.util.List;
 
 import FernandoDiaz.calendar.CalendarActivity;
 import FernandoDiaz.crono.Cronometro;
+import FernandoDiaz.form.Formulario;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         gbd = new GestorBD(this);
+
+        //Comprobamos si existe un usuario registrado
+        if (!gbd.existeUsuario()) {
+            //Si no existe, redirigimos al formulario
+            Intent intent = new Intent(this, Formulario.class);
+            startActivity(intent);
+            finish(); //Cerramos el MainActivity para que el usuario no pueda volver atrás
+        }
+
 
         // --- COMPROBAR REINICIO DIARIO ---
         comprobarReinicioDiario();

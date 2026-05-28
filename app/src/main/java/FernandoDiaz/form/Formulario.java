@@ -1,5 +1,6 @@
 package FernandoDiaz.form;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.healthmanager.GestorBD;
+import com.example.healthmanager.MainActivity;
 import com.example.healthmanager.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -26,8 +28,8 @@ import com.google.android.material.textfield.TextInputLayout;
 public class Formulario extends AppCompatActivity {
 
     // --- Campos de texto
-    private TextInputLayout tilNombre, tilApellido, tilEdad, tilPeso;
-    private TextInputEditText etNombre, etApellido, etEdad, etPeso;
+    private TextInputLayout tilNombre, tilApellido, tilEdad, tilPeso, tilAltura;
+    private TextInputEditText etNombre, etApellido, etEdad, etPeso, etAltura;
 
     // --- RadioGroups
     private RadioGroup rgSexo, rgSangre;
@@ -52,6 +54,7 @@ public class Formulario extends AppCompatActivity {
                 String apellido  = etApellido.getText().toString().trim();
                 int    edad      = Integer.parseInt(etEdad.getText().toString().trim());
                 double peso      = Double.parseDouble(etPeso.getText().toString().trim());
+                double altura    = Double.parseDouble(etAltura.getText().toString().trim());
 
                 int sexoId   = rgSexo.getCheckedRadioButtonId();
                 int sangreId = rgSangre.getCheckedRadioButtonId();
@@ -65,19 +68,19 @@ public class Formulario extends AppCompatActivity {
                         nombre + " " + apellido,  //Concatenamos nombre y apellido
                         edad,
                         sexo,
-                        0.0,  //Campo pendiente de añadir al formulario!!!
+                        altura,
                         peso,
                         sangre
                 );
+                //Si los datos se guardan correctamente, pasamos al MainActivity
                 if (exito) {
-                    Toast.makeText(this, "Datos guardados correctamente", Toast.LENGTH_LONG).show();
-                } else {
+                    Toast.makeText(this, "Bienvenido/a " + nombre + " " + apellido + "!", Toast.LENGTH_LONG).show();
+                    Intent pasarPantalla = new Intent(this, MainActivity.class);
+                    startActivity(pasarPantalla);
+                    finish();
+                } else { //Si no se guardan, mostramos el mensaje de error
                     Toast.makeText(this, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                 }
-
-                Toast.makeText(this,
-                        "Bienvenido/a " + nombre + " " + apellido + "!",
-                        Toast.LENGTH_LONG).show();
             }
         });
         setTitle("Formulario");
@@ -91,11 +94,14 @@ public class Formulario extends AppCompatActivity {
         tilApellido = findViewById(R.id.textInputLayoutApellido);
         tilEdad     = findViewById(R.id.textInputLayouEdad);
         tilPeso     = findViewById(R.id.textInputLayoutpeso);
+        tilAltura   = findViewById(R.id.textInputLayoutAltura);
+
 
         etNombre   = findViewById(R.id.etUsuario);
         etApellido = findViewById(R.id.etApellido);
         etEdad     = findViewById(R.id.etEdad);
         etPeso     = findViewById(R.id.etpeso);
+        etAltura   = findViewById(R.id.etAltura);
 
         rgSexo   = findViewById(R.id.rgSexo);
         rgSangre = findViewById(R.id.rgSangre);
@@ -177,13 +183,34 @@ public class Formulario extends AppCompatActivity {
             }
         }
 
-        // 5. Sexo (RadioGroup)
+        // 5. Altura
+        String alturaStr = etAltura.getText().toString().trim();
+        if (TextUtils.isEmpty(alturaStr)) {
+            tilAltura.setError("La altura no puede estar vacía");
+            valido = false;
+        } else {
+            try {
+                double altura = Double.parseDouble(alturaStr);
+                if (altura < 50 || altura > 250) {
+                    tilAltura.setError("Introduce una altura válida (cm)");
+                    valido = false;
+                } else {
+                    tilAltura.setError(null);
+                    tilAltura.setErrorEnabled(false);
+                }
+            } catch (NumberFormatException e) {
+                tilAltura.setError("La altura debe ser un número");
+                valido = false;
+            }
+        }
+
+        // 6. Sexo (RadioGroup)
         if (rgSexo.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "Por favor selecciona tu sexo", Toast.LENGTH_SHORT).show();
             valido = false;
         }
 
-        // 6. Tipo de sangre (RadioGroup)
+        // 7. Tipo de sangre (RadioGroup)
         if (rgSangre.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "Por favor selecciona tu tipo de sangre", Toast.LENGTH_SHORT).show();
             valido = false;

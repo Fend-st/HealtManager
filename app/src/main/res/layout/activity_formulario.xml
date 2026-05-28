@@ -10,9 +10,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-16dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,32 +22,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="Bienvenido a HeatlManager"
+                android:text="Bienvenido a HealthManager"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#FFFFFF"
-                android:textSize="34sp"
-                tools:text="Bienvenido a HeatlManager" />
+                android:textSize="34sp" />
 
             <TextView
                 android:id="@+id/titulo2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
                 android:text="Antes de comenzar dejanos saber un poco sobre ti"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF" />
@@ -59,16 +44,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
                 android:background="@drawable/fondo_redondeado"
                 android:orientation="vertical"
                 android:padding="5dp">
 
+                <!-- NOMBRE -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutUsuario"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -85,13 +65,14 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- APELLIDO -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutApellido"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:hint="introduce tu apellido">
+                    android:hint="Introduce tu apellido">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etApellido"
@@ -101,13 +82,14 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- EDAD -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayouEdad"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:hint="introduce tu Edad">
+                    android:hint="Introduce tu edad">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etEdad"
@@ -117,13 +99,14 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- PESO -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutpeso"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:hint="introduce tu peso">
+                    android:hint="Introduce tu peso (kg)">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etpeso"
@@ -133,6 +116,24 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- ALTURA -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutAltura"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:hint="Introduce tu altura (cm)">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAltura"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|numberDecimal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- SEXO -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -166,6 +167,7 @@
                     </RadioGroup>
                 </LinearLayout>
 
+                <!-- TIPO DE SANGRE -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -208,20 +210,23 @@
                             android:layout_height="wrap_content"
                             android:text="AB" />
 
-                        <Button
-                            android:id="@+id/btnConfirmar"
-                            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingVertical="16dp"
-                            android:text="Confirmar Formulario"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:backgroundTint="#48D7F4"
-                            app:cornerRadius="12dp" />
                     </RadioGroup>
                 </LinearLayout>
+
+                <!-- BOTÓN CONFIRMAR -->
+                <Button
+                    android:id="@+id/btnConfirmar"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="Confirmar Formulario"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#48D7F4"
+                    app:cornerRadius="12dp" />
 
             </LinearLayout>
 
