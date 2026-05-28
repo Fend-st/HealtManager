@@ -1,6 +1,7 @@
 package FernandoDiaz.crono;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
@@ -27,22 +28,24 @@ import java.util.Locale;
 
 import FernandoDiaz.calendar.CalendarActivity;
 
+/**
+ * Actividad que implementa un cronómetro funcional para registrar diferentes actividades físicas.
+ * Utiliza un Handler para la actualización periódica de la interfaz y SQLite para la persistencia.
+ */
 public class Cronometro extends AppCompatActivity {
+    // Definición de los componentes de la interfaz de usuario
     protected ProgressBar circularProgressBar;
     protected TextView tvTimer;
     protected TextView tvCurrentActivity;
     protected TextView tvTitle;
-    protected ImageButton btnActivity1;
-    protected ImageButton btnActivity2;
-    protected ImageButton btnActivity3;
-    protected ImageButton btnActivity4;
-    protected ImageButton btnActivity5;
-    protected Button btnActivity6;
-    protected Button btnActivity7;
+    protected ImageButton btnActivity1, btnActivity2, btnActivity3, btnActivity4, btnActivity5;
+    protected Button btnActivity6, btnActivity7;
+
+    // Variables de control de la lógica del cronómetro
     protected int posicion = 0;
     protected int progress = 0;
     protected boolean isPlaying = false;
-    protected Handler handler;
+    protected Handler handler; // Manejador para ejecutar tareas en el hilo principal
     protected String nombreActividad = "";
     protected BottomNavigationView menuNavegacion;
 
@@ -51,13 +54,31 @@ public class Cronometro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cronometro);
+        
+        // Configuración de los Insets para el diseño EdgeToEdge
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        //Inicializamos los elementos:
+        // Inicializamos las vistas y el manejador del hilo
+        inicializarVistas();
+        handler = new Handler();
+
+        // Configuramos el menú de navegación y establecemos el estado inicial
+        configurarNavegacion();
+        estadoInicial();
+
+        // Asociamos la lógica a los selectores de actividad y botones de control
+        configurarSelectoresActividad();
+        configurarBotonesControl();
+    }
+
+    /**
+     * Enlaza las variables Java con los IDs definidos en el layout XML.
+     */
+    private void inicializarVistas() {
         circularProgressBar = findViewById(R.id.circularProgressBar);
         tvTimer = findViewById(R.id.tvTimer);
         tvCurrentActivity = findViewById(R.id.tvCurrentActivity);
@@ -70,16 +91,25 @@ public class Cronometro extends AppCompatActivity {
         btnActivity6 = findViewById(R.id.btnActivity6);
         btnActivity7 = findViewById(R.id.btnActivity7);
         menuNavegacion = findViewById(R.id.bottom_navigation);
-        handler = new Handler();
+    }
 
-        //MENU DE NAVEGACIÓN
-        //Marcamos el item en el que nos encontramos (Cronometro en este caso)
+    /**
+     * Restablece los valores visuales por defecto.
+     */
+    private void estadoInicial() {
+        tvTimer.setText("00:00:00");
+        tvCurrentActivity.setText("ACTIVIDAD ACTUAL: NINGUNA");
+        circularProgressBar.setProgress(0);
+        btnActivity6.setEnabled(false); // El botón PLAY se habilita al elegir una actividad
+    }
+
+    /**
+     * Configura el listener para el BottomNavigationView y gestiona el cambio entre actividades.
+     */
+    private void configurarNavegacion() {
         menuNavegacion.setSelectedItemId(R.id.nav_timer);
-
-        //Evento para cambiar de actividad segun el boton que pulsemos
         menuNavegacion.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
-
             if (itemId == R.id.nav_home) {
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -100,116 +130,88 @@ public class Cronometro extends AppCompatActivity {
             }
             return false;
         });
+    }
 
-        //Inicializamos los valores:
-        tvTimer.setText("00:00:00");
-        tvCurrentActivity.setText("ACTIVIDAD ACTUAL: NINGUNA");
-        circularProgressBar.setProgress(0);
+    /**
+     * Define los eventos de selección para los diferentes tipos de ejercicio físico.
+     */
+    private void configurarSelectoresActividad() {
+        btnActivity1.setOnClickListener(v -> seleccionarActividad(1, "Caminar"));
+        btnActivity2.setOnClickListener(v -> seleccionarActividad(2, "Correr"));
+        btnActivity3.setOnClickListener(v -> seleccionarActividad(3, "Gimnasio"));
+        btnActivity4.setOnClickListener(v -> seleccionarActividad(4, "Ciclismo"));
+        btnActivity5.setOnClickListener(v -> seleccionarActividad(5, "Yoga"));
+    }
 
-        //Desactivamos el botón Play del cronómetro hasta que el usuario seleccione una actividad
-        btnActivity6.setEnabled(false);
+    /**
+     * Actualiza el nombre de la actividad actual y habilita el botón de inicio.
+     */
+    private void seleccionarActividad(int p, String nombre) {
+        posicion = p;
+        nombreActividad = nombre;
+        tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
+        btnActivity6.setEnabled(true);
+    }
 
-        //Inicializamos los botones:
-        btnActivity1.setOnClickListener(v -> {//Seleccionamos la actividad 1
-            posicion = 1;
-            nombreActividad = "Caminar";
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
-            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
-
-        });
-        btnActivity2.setOnClickListener(v -> {//Selecionamos la actividad 2
-            posicion = 2;
-            nombreActividad = "Correr";
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
-            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
-
-        });
-        btnActivity3.setOnClickListener(v -> {//Selecionamos la actividad 3
-            posicion = 3;
-            nombreActividad = "Gimnasio";
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
-            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
-
-        });
-        btnActivity4.setOnClickListener(v -> {//Selecionamos la actividad 4
-            posicion = 4;
-            nombreActividad = "Ciclismo";
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
-            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
-
-        });
-        btnActivity5.setOnClickListener(v -> {//Selecionamos la actividad 5
-            posicion = 5;
-            nombreActividad = "Yoga";
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: " + nombreActividad);
-            btnActivity6.setEnabled(true); //Activamos el botón Play del cronómetro
-
-        });
-        btnActivity6.setOnClickListener(v -> {//Comenzamos el cronómetro (Botón PLAY)
-            btnActivity6.setEnabled(false); //Desactivamos el botón Play del cronómetro
+    /**
+     * Define el comportamiento de los botones PLAY y STOP del cronómetro.
+     */
+    private void configurarBotonesControl() {
+        btnActivity6.setOnClickListener(v -> {
+            btnActivity6.setEnabled(false);
             ejecutarCronometro();
-
-            /*if(posicion==1){
-                isPlaying = true;
-                ejecutarCronometro();
-
-            }else if(posicion==2){
-                isPlaying = true;
-                ejecutarCronometro();
-
-            }else if(posicion==3){
-                isPlaying = true;
-                ejecutarCronometro();
-
-            }else if(posicion==4){
-                isPlaying = true;
-                ejecutarCronometro();
-
-            }else if(posicion==5){
-                isPlaying = true;
-                ejecutarCronometro();
-            }else {
-                Toast.makeText(this, "No hay ninguna actividad registrada", Toast.LENGTH_SHORT).show();
-            }*/
         });
-        btnActivity7.setOnClickListener(v -> {//Paramos el cronómetro (Botón STOP)
 
-            //Si no hay ninguna actividad en curso, no hacemos nada
+        btnActivity7.setOnClickListener(v -> {
             if (progress == 0) {
                 Toast.makeText(this, "No hay ninguna actividad en curso", Toast.LENGTH_SHORT).show();
                 return;
             }
             isPlaying = false;
-            btnActivity6.setEnabled(true); //Activamos de nuevo el botón Play del cronómetro
+            btnActivity6.setEnabled(true);
 
-            //Obtenemos el tiempo del cronómetro
-            String tiempo = tvTimer.getText().toString();
-
-            //Obtenemos la fecha del sistema
-            String fecha = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-
-            //Guardamos los datos en la base de datos
-            GestorBD gbd = new GestorBD(this);
-            boolean insertado = gbd.insertarActividad(nombreActividad, tiempo, fecha, 1);
-
-            if (insertado) {
-                Toast.makeText(this, "Actividad guardada correctamente", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Error al guardar la actividad", Toast.LENGTH_SHORT).show();
-            }
-
-            //Reiniciamos los valores del cronómetro
-            progress = 0;
-            tvTimer.setText("00:00:00");
-
-            //Reseteamos la posicion y deshabilitamos el Play
-            posicion = 0;
-            btnActivity6.setEnabled(false);
-            circularProgressBar.setProgress(0);
-            tvCurrentActivity.setText("ACTIVIDAD ACTUAL: NINGUNA");
+            // Almacenamos el registro en la base de datos antes de resetear
+            guardarActividadEnBD();
+            reiniciarCronometro();
         });
-
     }
+
+    /**
+     * Recupera el ID del usuario y persiste el registro de actividad en SQLite.
+     */
+    private void guardarActividadEnBD() {
+        String tiempo = tvTimer.getText().toString();
+        String fecha = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        GestorBD gbd = new GestorBD(this);
+        int idUsuario = 1; 
+        
+        Cursor cursorUser = gbd.obtenerUsuario();
+        if (cursorUser != null && cursorUser.moveToFirst()) {
+            idUsuario = cursorUser.getInt(cursorUser.getColumnIndexOrThrow(GestorBD.USUARIO_ID));
+            cursorUser.close();
+        }
+
+        boolean insertado = gbd.insertarActividad(nombreActividad, tiempo, fecha, idUsuario);
+        if (insertado) {
+            Toast.makeText(this, "Actividad guardada correctamente", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error al guardar la actividad", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Limpia las variables de progreso y actualiza los elementos visuales al estado inicial.
+     */
+    private void reiniciarCronometro() {
+        progress = 0;
+        tvTimer.setText("00:00:00");
+        posicion = 0;
+        btnActivity6.setEnabled(false);
+        circularProgressBar.setProgress(0);
+        tvCurrentActivity.setText("ACTIVIDAD ACTUAL: NINGUNA");
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -218,10 +220,12 @@ public class Cronometro extends AppCompatActivity {
         }
     }
 
-    //Método para ejecutar el cronometro
+    /**
+     * Lógica recursiva que utiliza postDelayed para incrementar el contador cada segundo.
+     */
     private void ejecutarCronometro() {
-        if (isPlaying) return; //Si el cronómetro ya está en marcha, no hacemos nada
-        isPlaying = true; //Si el cronómetro no está en marcha, lo iniciamos
+        if (isPlaying) return; 
+        isPlaying = true; 
 
         final Runnable runnable = new Runnable() {
             @Override
@@ -232,14 +236,16 @@ public class Cronometro extends AppCompatActivity {
 
                 if (isPlaying) {
                     progress++;
-                    // Se vuelve a llamar a sí mismo en 1 segundo (1000ms)
                     handler.postDelayed(this, 1000);
                 }
             }
         };
         handler.post(runnable);
     }
-    //Método para formatear el tiempo y que aparezca como 00:00:00
+
+    /**
+     * Formatea un valor entero de segundos en una cadena con formato HH:MM:SS.
+     */
     public static String formatearTiempo(int segundosTotales) {
         int horas = segundosTotales / 3600;
         int minutos = (segundosTotales % 3600) / 60;
@@ -247,6 +253,9 @@ public class Cronometro extends AppCompatActivity {
         return String.format(Locale.getDefault(), "%02d:%02d:%02d", horas, minutos, segs);
     }
 
+    /**
+     * Método auxiliar para obtener el texto descriptivo de la actividad según su ID.
+     */
     public static String obtenerTextoActividad(int idActividad) {
         if (idActividad == 0) return "ACTIVIDAD ACTUAL: NINGUNA";
         if (idActividad >= 1 && idActividad <= 5) {
@@ -254,5 +263,4 @@ public class Cronometro extends AppCompatActivity {
         }
         return "ACTIVIDAD ACTUAL: NINGUNA";
     }
-
 }

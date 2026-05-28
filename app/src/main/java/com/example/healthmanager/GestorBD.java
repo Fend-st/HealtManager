@@ -500,4 +500,10 @@ public class GestorBD extends SQLiteOpenHelper {
         // Esto pone a 0 la columna tiempo para todas las filas de la tabla
         db.execSQL("UPDATE " + TABLA_ACTIVIDAD + " SET " + ACTIVIDAD_TIEMPO + " = 0");
     }
+
+    //METODO PARA REINICIAR UNA ACTIVIDAD ESPECIFICA:
+    public void reiniciarActividad(String nombreActividad) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE " + TABLA_ACTIVIDAD + " SET " + ACTIVIDAD_TIEMPO + " = 0 WHERE " + ACTIVIDAD_NOMBRE + " = ?", new String[]{nombreActividad});
+    }
 }
