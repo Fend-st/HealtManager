@@ -66,21 +66,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0f823e6-737d-4d00-8010-d425c4acb4f2" name="Changes" comment="Barra navegacion arreglada.">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/icono.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/form/Formulario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/FernandoDiaz/form/Formulario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/GestorBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/GestorBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/PerfilUsuarioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthmanager/PerfilUsuarioActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_calendar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_calendar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_perfil_usuario.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_perfil_usuario.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_resumen_actividad.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_resumen_actividad.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/barra_navegacion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/barra_navegacion.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
-    </list>
+    <list default="true" id="c0f823e6-737d-4d00-8010-d425c4acb4f2" name="Changes" comment="Completado" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -291,14 +277,31 @@
       <option name="project" value="LOCAL" />
       <updated>1779915055595</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Completado">
+      <option name="closed" value="true" />
+      <created>1780002498238</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1780002498238</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Completado">
+      <option name="closed" value="true" />
+      <created>1780002505154</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1780002505154</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Solo faltan 2 cosas" />
     <MESSAGE value="Solo falta 1 cosa" />
     <MESSAGE value="Barra navegacion arreglada." />
-    <option name="LAST_COMMIT_MESSAGE" value="Barra navegacion arreglada." />
+    <MESSAGE value="Completado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completado" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
