@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     Handler sliderHandler = new Handler(Looper.getMainLooper());
     Runnable sliderRunnable;
 
-    // Vistas del resumen (Copiado de ResumenActividadActivity)
-    protected TextView texto1_RA, texto2_RA, texto3_RA, texto4_RA, texto5_RA;
-    protected ProgressBar progressCaminar_RA, progressCorrer_RA, progressGimnasio_RA, progressCiclismo_RA, progressYoga_RA;
+    // Vistas del resumen de actividad en el Main
+    protected TextView tvCaminar_Main, tvCorrer_Main, tvGimnasio_Main, tvCiclismo_Main, tvYoga_Main;
+    protected ProgressBar progressCaminar_Main, progressCorrer_Main, progressGimnasio_Main, progressCiclismo_Main, progressYoga_Main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         gbd = new GestorBD(this);
 
+        // --- COMPROBAR REINICIO DIARIO ---
+        comprobarReinicioDiario();
+
         // --- DATOS BIOMÉTRICOS ---
         TextView tvNombre = findViewById(R.id.tvNombre);
         TextView tvPeso = findViewById(R.id.tvPeso);
@@ -45,19 +48,21 @@ public class MainActivity extends AppCompatActivity {
         TextView tvIMC = findViewById(R.id.tvIMC);
 
         Cursor curUsuario = gbd.obtenerUsuario();
-        if (curUsuario.moveToFirst()) {
-            String nombre = curUsuario.getString(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_NOMBRE));
-            double peso = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_PESO));
-            double altura = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_ALTURA));
-            double alturaEnMetros = altura / 100;
-            double imc = peso / (alturaEnMetros * alturaEnMetros);
+        if (curUsuario != null) {
+            if (curUsuario.moveToFirst()) {
+                String nombre = curUsuario.getString(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_NOMBRE));
+                double peso = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_PESO));
+                double altura = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_ALTURA));
+                double alturaEnMetros = altura / 100;
+                double imc = peso / (alturaEnMetros * alturaEnMetros);
 
-            tvNombre.setText("Nombre: " + nombre);
-            tvPeso.setText("Peso: " + peso + " kg");
-            tvAltura.setText("Altura: " + altura + " cm");
-            tvIMC.setText("IMC: " + String.format("%.2f", imc));
+                tvNombre.setText("Nombre: " + nombre);
+                tvPeso.setText("Peso: " + peso + " kg");
+                tvAltura.setText("Altura: " + altura + " cm");
+                tvIMC.setText("IMC: " + String.format(java.util.Locale.getDefault(), "%.2f", imc));
+            }
+            curUsuario.close();
         }
-        curUsuario.close();
 
         // --- RESUMEN DE ACTIVIDAD (Lógica calcada de ResumenActividadActivity) ---
         inicializarVistasResumen();
@@ -112,50 +117,92 @@ public class MainActivity extends AppCompatActivity {
 
     private void inicializarVistasResumen() {
         // Vinculamos los IDs del main con la lógica del resumen
-        texto1_RA = findViewById(R.id.tvCaminarMain);
-        texto2_RA = findViewById(R.id.tvCorrerMain);
-        texto3_RA = findViewById(R.id.tvGimnasioMain);
-        texto4_RA = findViewById(R.id.tvCiclismoMain);
-        texto5_RA = findViewById(R.id.tvYogaMain);
-        
-        progressCaminar_RA = findViewById(R.id.progressCaminarMain);
-        progressCorrer_RA = findViewById(R.id.progressCorrerMain);
-        progressGimnasio_RA = findViewById(R.id.progressGimnasioMain);
-        progressCiclismo_RA = findViewById(R.id.progressCiclismoMain);
-        progressYoga_RA = findViewById(R.id.progressYogaMain);
+        tvCaminar_Main = findViewById(R.id.tvCaminarMain);
+        tvCorrer_Main = findViewById(R.id.tvCorrerMain);
+        tvGimnasio_Main = findViewById(R.id.tvGimnasioMain);
+        tvCiclismo_Main = findViewById(R.id.tvCiclismoMain);
+        tvYoga_Main = findViewById(R.id.tvYogaMain);
+
+        progressCaminar_Main = findViewById(R.id.progressCaminarMain);
+        progressCorrer_Main = findViewById(R.id.progressCorrerMain);
+        progressGimnasio_Main = findViewById(R.id.progressGimnasioMain);
+        progressCiclismo_Main = findViewById(R.id.progressCiclismoMain);
+        progressYoga_Main = findViewById(R.id.progressYogaMain);
     }
 
     private void cargarDatosActividad() {
         Cursor cursor = gbd.obtenerActividad();
+
+        int segundosCaminar = 0;
+        int segundosCorrer = 0;
+        int segundosGimnasio = 0;
+        int segundosCiclismo = 0;
+        int segundosYoga = 0;
+
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 String nombre = cursor.getString(cursor.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_NOMBRE));
-                int segundos = cursor.getInt(cursor.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_TIEMPO));
+                String tiempoString = cursor.getString(cursor.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_TIEMPO));
+                int segundos = convertirHHMMSSaSegundos(tiempoString);
 
                 switch (nombre) {
-                    case "Caminar":
-                        if (texto1_RA != null) texto1_RA.setText("Caminar: " + segundos + " seg");
-                        if (progressCaminar_RA != null) progressCaminar_RA.setProgress(segundos);
-                        break;
-                    case "Correr":
-                        if (texto2_RA != null) texto2_RA.setText("Correr: " + segundos + " seg");
-                        if (progressCorrer_RA != null) progressCorrer_RA.setProgress(segundos);
-                        break;
-                    case "Gimnasio":
-                        if (texto3_RA != null) texto3_RA.setText("Gimnasio: " + segundos + " seg");
-                        if (progressGimnasio_RA != null) progressGimnasio_RA.setProgress(segundos);
-                        break;
-                    case "Ciclismo":
-                        if (texto4_RA != null) texto4_RA.setText("Ciclismo: " + segundos + " seg");
-                        if (progressCiclismo_RA != null) progressCiclismo_RA.setProgress(segundos);
-                        break;
-                    case "Yoga":
-                        if (texto5_RA != null) texto5_RA.setText("Yoga: " + segundos + " seg");
-                        if (progressYoga_RA != null) progressYoga_RA.setProgress(segundos);
-                        break;
+                    case "Caminar": segundosCaminar += segundos; break;
+                    case "Correr": segundosCorrer += segundos; break;
+                    case "Gimnasio": segundosGimnasio += segundos; break;
+                    case "Ciclismo": segundosCiclismo += segundos; break;
+                    case "Yoga": segundosYoga += segundos; break;
                 }
             }
             cursor.close();
+        }
+
+        actualizarVistaActividad(tvCaminar_Main, progressCaminar_Main, "Caminar", segundosCaminar);
+        actualizarVistaActividad(tvCorrer_Main, progressCorrer_Main, "Correr", segundosCorrer);
+        actualizarVistaActividad(tvGimnasio_Main, progressGimnasio_Main, "Gimnasio", segundosGimnasio);
+        actualizarVistaActividad(tvCiclismo_Main, progressCiclismo_Main, "Ciclismo", segundosCiclismo);
+        actualizarVistaActividad(tvYoga_Main, progressYoga_Main, "Yoga", segundosYoga);
+    }
+
+    private void actualizarVistaActividad(TextView textView, ProgressBar progressBar, String etiqueta, int segundosTotales) {
+        if (textView == null || progressBar == null) return;
+
+        int h = segundosTotales / 3600;
+        int m = (segundosTotales % 3600) / 60;
+        int s = segundosTotales % 60;
+        String tiempoFormateado = String.format(java.util.Locale.getDefault(), "%02d:%02d:%02d", h, m, s);
+
+        textView.setText(etiqueta + ": " + tiempoFormateado);
+        progressBar.setProgress(segundosTotales);
+    }
+
+    private void comprobarReinicioDiario() {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault());
+        String fechaHoy = sdf.format(new java.util.Date());
+
+        android.content.SharedPreferences prefs = getSharedPreferences("ControlDiario", android.content.Context.MODE_PRIVATE);
+        String ultimaFecha = prefs.getString("ultima_fecha_uso", "");
+
+        if (!fechaHoy.equals(ultimaFecha)) {
+            gbd.reiniciarSegundosActividades();
+            prefs.edit().putString("ultima_fecha_uso", fechaHoy).apply();
+        }
+    }
+
+    private int convertirHHMMSSaSegundos(String tiempo) {
+        try {
+            if (tiempo == null || tiempo.isEmpty() || tiempo.equals("0")) return 0;
+            if (tiempo.contains(":")) {
+                String[] partes = tiempo.split(":");
+                if (partes.length == 3) {
+                    int h = Integer.parseInt(partes[0]);
+                    int m = Integer.parseInt(partes[1]);
+                    int s = Integer.parseInt(partes[2]);
+                    return (h * 3600) + (m * 60) + s;
+                }
+            }
+            return Integer.parseInt(tiempo);
+        } catch (Exception e) {
+            return 0;
         }
     }
 
