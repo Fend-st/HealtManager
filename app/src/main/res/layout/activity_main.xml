@@ -19,7 +19,7 @@
         android:background="@drawable/fondo_redondeado"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -52,7 +52,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="noviembre 25"
+                    android:text="Noviembre 25"
                     android:textColor="#FFFFFF"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -129,51 +129,105 @@
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/rounded_container"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Resumen de actividad"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvDormirMain"
+                    android:id="@+id/tvCaminarMain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Dormir:"
-                    android:textColor="#FFFFFF" />
+                    android:layout_marginTop="6dp"
+                    android:text="Caminar:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
                 <ProgressBar
-                    android:id="@+id/progressDormirMain"
+                    android:id="@+id/progressCaminarMain"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:max="24"
-                    android:progress="8"
+                    android:max="86400"
+                    android:progress="0"
                     android:progressTint="#F44336" />
 
                 <TextView
-                    android:id="@+id/tvEjercicioMain"
+                    android:id="@+id/tvCorrerMain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Ejercicio:"
-                    android:textColor="#FFFFFF" />
+                    android:layout_marginTop="2dp"
+                    android:text="Correr:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
                 <ProgressBar
-                    android:id="@+id/progressEjercicioMain"
+                    android:id="@+id/progressCorrerMain"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:max="86400"
+                    android:progress="0"
+                    android:progressTint="#9C27B0" />
+
+                <TextView
+                    android:id="@+id/tvGimnasioMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:max="24"
-                    android:progress="2"
-                    android:progressTint="#4CAF50" />
+                    android:text="Gimnasio:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressGimnasioMain"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="86400"
+                    android:progress="0"
+                    android:progressTint="#FFEB3B" />
+
+                <TextView
+                    android:id="@+id/tvCiclismoMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Ciclismo:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressCiclismoMain"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="86400"
+                    android:progress="0"
+                    android:progressTint="#FF9800" />
+
+                <TextView
+                    android:id="@+id/tvYogaMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Yoga:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressYogaMain"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="86400"
+                    android:progress="0"
+                    android:progressTint="#00BCD4" />
 
             </LinearLayout>
 
@@ -228,6 +282,15 @@
                     android:text="IMC:"
                     android:textColor="#FFFFFF" />
 
+                <Button
+                    android:id="@+id/btnIrPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="#71C3EB"
+                    android:text="Ir al Perfil"
+                    android:textColor="#FFFFFF" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -237,16 +300,16 @@
     <!-- MENÚ NAVEGACIÓN -->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@drawable/nav_redondeada"
+        android:background="@drawable/nav_redonda"
         app:itemIconTint="@color/nav_color"
         app:itemTextColor="@color/nav_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/barra_navegacion" />
+        app:menu="@menu/barra_navegadr" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

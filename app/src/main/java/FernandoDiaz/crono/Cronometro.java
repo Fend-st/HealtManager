@@ -81,15 +81,21 @@ public class Cronometro extends AppCompatActivity {
             int itemId = item.getItemId();
 
             if (itemId == R.id.nav_home) {
-                startActivity(new Intent(this, MainActivity.class));
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_calendar) {
-                startActivity(new Intent(this, CalendarActivity.class));
+                Intent intent = new Intent(this, CalendarActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_timer) {
                 return true;
             } else if (itemId == R.id.nav_summary) {
-                startActivity(new Intent(this, ResumenActividadActivity.class));
+                Intent intent = new Intent(this, ResumenActividadActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 return true;
             }
             return false;
@@ -204,6 +210,14 @@ public class Cronometro extends AppCompatActivity {
         });
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (menuNavegacion != null) {
+            menuNavegacion.setSelectedItemId(R.id.nav_timer);
+        }
+    }
+
     //Método para ejecutar el cronometro
     private void ejecutarCronometro() {
         if (isPlaying) return; //Si el cronómetro ya está en marcha, no hacemos nada

@@ -154,6 +154,23 @@ public class GestorBD extends SQLiteOpenHelper {
         return resultado != -1;
     }
 
+    //METODO PARA ACTUALIZAR LOS DATOS DEL USUARIO EN LA TABLA_USUARIO:
+    public boolean actualizarUsuario(String nombre, int edad, String sexo, double altura, double peso, String tipoSangre) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues datos = new ContentValues();
+        datos.put(USUARIO_NOMBRE, nombre);
+        datos.put(USUARIO_EDAD, edad);
+        datos.put(USUARIO_SEXO, sexo);
+        datos.put(USUARIO_ALTURA, altura);
+        datos.put(USUARIO_PESO, peso);
+        datos.put(USUARIO_SANGRE, tipoSangre);
+
+        // Actualizamos todos los registros (normalmente solo hay uno)
+        int resultado = db.update(TABLA_USUARIO, datos, null, null);
+        db.close();
+        return resultado > 0;
+    }
+
     //METODO PARA INSERTAR UN EVENTO EN LA TABLA_EVENTO:
     public boolean insertarEvento(String nombre, String descripcion, int seRepite, int idUsuario) {
         //Abrimos la BD en modo escritura

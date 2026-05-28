@@ -50,18 +50,21 @@ public class CalendarActivity extends AppCompatActivity implements
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_home) {
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_calendar) {
                 return true;
             } else if (itemId == R.id.nav_timer) {
-                startActivity(new Intent(this, Cronometro.class));
-                finish();
+                Intent intent = new Intent(this, Cronometro.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_summary) {
-                startActivity(new Intent(this, ResumenActividadActivity.class));
-                finish();
+                Intent intent = new Intent(this, ResumenActividadActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 return true;
             }
             return false;
@@ -75,6 +78,15 @@ public class CalendarActivity extends AppCompatActivity implements
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setSelectedItemId(R.id.nav_calendar);
+        }
     }
 
     // muestra los popups de editar y crear evento
