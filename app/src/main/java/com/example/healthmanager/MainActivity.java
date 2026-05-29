@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     Handler sliderHandler = new Handler(Looper.getMainLooper());
     Runnable sliderRunnable;
 
+    // Vistas del resumen
+    private TextView tvCaminarMain, tvCorrerMain, tvGimnasioMain, tvCiclismoMain, tvYogaMain;
+    private ProgressBar progressCaminarMain, progressCorrerMain, progressGimnasioMain, progressCiclismoMain, progressYogaMain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
             }
             curUsuario.close();
         }
+
+        // Inicializar vistas del resumen
+        inicializarVistasResumen();
 
         viewPagerTips = findViewById(R.id.viewPagerTips);
         findViewById(R.id.btnIrPerfil).setOnClickListener(v -> {
@@ -126,7 +133,111 @@ public class MainActivity extends AppCompatActivity {
         if (bottomNavigationView != null) {
             bottomNavigationView.setSelectedItemId(R.id.nav_home);
         }
+        
+        // Actualizar datos del resumen y biométricos
+        actualizarDatosBiometricos();
+        cargarDatosActividad();
+        
         sliderHandler.postDelayed(sliderRunnable, 3000);
+    }
+
+    private void inicializarVistasResumen() {
+        tvCaminarMain = findViewById(R.id.tvCaminarMain);
+        tvCorrerMain = findViewById(R.id.tvCorrerMain);
+        tvGimnasioMain = findViewById(R.id.tvGimnasioMain);
+        tvCiclismoMain = findViewById(R.id.tvCiclismoMain);
+        tvYogaMain = findViewById(R.id.tvYogaMain);
+
+        progressCaminarMain = findViewById(R.id.progressCaminarMain);
+        progressCorrerMain = findViewById(R.id.progressCorrerMain);
+        progressGimnasioMain = findViewById(R.id.progressGimnasioMain);
+        progressCiclismoMain = findViewById(R.id.progressCiclismoMain);
+        progressYogaMain = findViewById(R.id.progressYogaMain);
+    }
+
+    private void actualizarDatosBiometricos() {
+        TextView tvNombre = findViewById(R.id.tvNombre);
+        TextView tvPeso = findViewById(R.id.tvPeso);
+        TextView tvAltura = findViewById(R.id.tvAltura);
+        TextView tvIMC = findViewById(R.id.tvIMC);
+
+        Cursor curUsuario = gbd.obtenerUsuario();
+        if (curUsuario != null) {
+            if (curUsuario.moveToFirst()) {
+                String nombre = curUsuario.getString(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_NOMBRE));
+                double peso = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_PESO));
+                double altura = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_ALTURA));
+                double alturaEnMetros = altura / 100;
+                double imc = peso / (alturaEnMetros * alturaEnMetros);
+
+                tvNombre.setText("Nombre: " + nombre);
+                tvPeso.setText("Peso: " + peso + " kg");
+                tvAltura.setText("Altura: " + altura + " cm");
+                tvIMC.setText("IMC: " + String.format(java.util.Locale.getDefault(), "%.2f", imc));
+            }
+            curUsuario.close();
+        }
+    }
+
+    private void cargarDatosActividad() {
+        Cursor cursor = gbd.obtenerActividad();
+
+        int segundosCaminar = 0;
+        int segundosCorrer = 0;
+        int segundosGimnasio = 0;
+        int segundosCiclismo = 0;
+        int segundosYoga = 0;
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                String nombre = cursor.getString(cursor.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_NOMBRE));
+                String tiempoString = cursor.getString(cursor.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_TIEMPO));
+                int segundos = convertirHHMMSSaSegundos(tiempoString);
+
+                switch (nombre) {
+                    case "Caminar": segundosCaminar += segundos; break;
+                    case "Correr": segundosCorrer += segundos; break;
+                    case "Gimnasio": segundosGimnasio += segundos; break;
+                    case "Ciclismo": segundosCiclismo += segundos; break;
+                    case "Yoga": segundosYoga += segundos; break;
+                }
+            }
+            cursor.close();
+        }
+
+        actualizarVistaActividad(tvCaminarMain, progressCaminarMain, "Caminar", segundosCaminar);
+        actualizarVistaActividad(tvCorrerMain, progressCorrerMain, "Correr", segundosCorrer);
+        actualizarVistaActividad(tvGimnasioMain, progressGimnasioMain, "Gimnasio", segundosGimnasio);
+        actualizarVistaActividad(tvCiclismoMain, progressCiclismoMain, "Ciclismo", segundosCiclismo);
+        actualizarVistaActividad(tvYogaMain, progressYogaMain, "Yoga", segundosYoga);
+    }
+
+    private void actualizarVistaActividad(TextView textView, ProgressBar progressBar, String etiqueta, int segundosTotales) {
+        int h = segundosTotales / 3600;
+        int m = (segundosTotales % 3600) / 60;
+        int s = segundosTotales % 60;
+        String tiempoFormateado = String.format(java.util.Locale.getDefault(), "%02d:%02d:%02d", h, m, s);
+
+        textView.setText(etiqueta + ": " + tiempoFormateado);
+        progressBar.setProgress(segundosTotales);
+    }
+
+    private int convertirHHMMSSaSegundos(String tiempo) {
+        try {
+            if (tiempo == null || tiempo.isEmpty() || tiempo.equals("0")) return 0;
+            if (tiempo.contains(":")) {
+                String[] partes = tiempo.split(":");
+                if (partes.length == 3) {
+                    int h = Integer.parseInt(partes[0]);
+                    int m = Integer.parseInt(partes[1]);
+                    int s = Integer.parseInt(partes[2]);
+                    return (h * 3600) + (m * 60) + s;
+                }
+            }
+            return Integer.parseInt(tiempo);
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     @Override
