@@ -16,13 +16,19 @@ import androidx.fragment.app.DialogFragment;
 import com.example.healthmanager.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
+/**
+ * Diálogo para la creación o edición de un evento individual.
+ * Permite al usuario introducir un título y una descripción para una fecha específica.
+ */
 public class EventDialogFragment extends DialogFragment {
 
     private static final String ARG_DATE = "arg_date";
+    private static final String ARG_ID = "arg_id";
     private static final String ARG_TITLE = "arg_title";
     private static final String ARG_DESC = "arg_desc";
 
     private CalendarDay selectedDate;
+    private String eventId;
     private String initialTitle;
     private String initialDescription;
 
@@ -31,7 +37,7 @@ public class EventDialogFragment extends DialogFragment {
     private OnEventSavedListener listener;
 
     public interface OnEventSavedListener {
-        void onEventSaved(CalendarDay date, String title, String description);
+        void onEventSaved(CalendarDay date, String title, String description, @Nullable String eventId);
     }
 
     public static EventDialogFragment newInstance(CalendarDay date) {
@@ -42,10 +48,11 @@ public class EventDialogFragment extends DialogFragment {
         return fragment;
     }
 
-    public static EventDialogFragment newInstance(CalendarDay date, String title, String description) {
+    public static EventDialogFragment newInstance(CalendarDay date, String eventId, String title, String description) {
         EventDialogFragment fragment = new EventDialogFragment();
         Bundle args = new Bundle();
         args.putParcelable(ARG_DATE, date);
+        args.putString(ARG_ID, eventId);
         args.putString(ARG_TITLE, title);
         args.putString(ARG_DESC, description);
         fragment.setArguments(args);
@@ -61,6 +68,7 @@ public class EventDialogFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             selectedDate = getArguments().getParcelable(ARG_DATE);
+            eventId = getArguments().getString(ARG_ID);
             initialTitle = getArguments().getString(ARG_TITLE);
             initialDescription = getArguments().getString(ARG_DESC);
         }
@@ -97,7 +105,7 @@ public class EventDialogFragment extends DialogFragment {
             }
 
             if (listener != null) {
-                listener.onEventSaved(selectedDate, title, description);
+                listener.onEventSaved(selectedDate, title, description, eventId);
             }
             dismiss();
         });
