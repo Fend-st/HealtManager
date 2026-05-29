@@ -16,6 +16,10 @@ import androidx.fragment.app.DialogFragment;
 import com.example.healthmanager.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
+/**
+ * Diálogo para la creación o edición de un evento individual.
+ * Permite al usuario introducir un título y una descripción para una fecha específica.
+ */
 public class EventDialogFragment extends DialogFragment {
 
     private static final String ARG_DATE = "arg_date";

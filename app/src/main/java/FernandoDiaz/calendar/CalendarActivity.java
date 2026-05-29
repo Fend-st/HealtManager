@@ -1,6 +1,9 @@
 package FernandoDiaz.calendar;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
@@ -15,6 +18,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.healthmanager.GestorBD;
 import com.example.healthmanager.MainActivity;
 import com.example.healthmanager.R;
 import com.example.healthmanager.ResumenActividadActivity;
@@ -23,13 +27,21 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import java.util.Locale;
+
 import FernandoDiaz.crono.Cronometro;
 
+/**
+ * Actividad principal del calendario que gestiona la visualización de días,
+ * la selección de fechas y la apertura de diálogos para crear o listar eventos.
+ * Implementa interfaces para reaccionar a la creación y edición de eventos.
+ */
 public class CalendarActivity extends AppCompatActivity implements 
         EventDialogFragment.OnEventSavedListener,
         EventListDialogFragment.OnEventActionListener {
 
     private MaterialCalendarView calendarView;
+    private GestorBD gbd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +54,7 @@ public class CalendarActivity extends AppCompatActivity implements
             return insets;
         });
 
+        gbd = new GestorBD(this);
         calendarView = findViewById(R.id.calendarView);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -133,7 +146,6 @@ public class CalendarActivity extends AppCompatActivity implements
 
     @Override
     public void onEventSaved(CalendarDay date, String title, String description) {
-        // En la implementación real, aquí se decide  si es un INSERT o un UPDATE
         saveEventToDatabase(date, title, description);
         calendarView.clearSelection();
     }
@@ -145,11 +157,54 @@ public class CalendarActivity extends AppCompatActivity implements
     }
 
     /**
-     * MÉTODO PLACEHOLDER: Lógica para INSERTAR un nuevo evento.
+     * Inserta un nuevo evento en la base de datos de forma manual, respetando que GestorBD no se puede modificar.
      */
     private void saveEventToDatabase(CalendarDay date, String title, String description) {
-        String dateFormatted = date.getDay() + "/" + (date.getMonth() + 1) + "/" + date.getYear();
-        Toast.makeText(this, "NUEVO EVENTO: " + title + " (" + dateFormatted + ")", Toast.LENGTH_SHORT).show();
+        SQLiteDatabase db = gbd.getWritableDatabase();
+        
+        // 1. Obtener ID del primer usuario disponible
+        int idUsuario = -1;
+        Cursor cur = db.rawQuery("SELECT " + GestorBD.USUARIO_ID + " FROM " + GestorBD.TABLA_USUARIO + " LIMIT 1", null);
+        if (cur.moveToFirst()) {
+            idUsuario = cur.getInt(0);
+        }
+        cur.close();
+
+        if (idUsuario == -1) {
+            Toast.makeText(this, "Debe registrar un usuario primero", Toast.LENGTH_SHORT).show();
+            db.close();
+            return;
+        }
+
+        // 2. Insertar en TABLA_EVENTO
+        ContentValues ev = new ContentValues();
+        ev.put(GestorBD.EVENTO_NOMBRE, title);
+        ev.put(GestorBD.EVENTO_DESCRIPCION, description);
+        ev.put(GestorBD.EVENTO_REPITE, 0);
+        ev.put(GestorBD.EVENTO_ID_USUARIO, idUsuario);
+
+        long idEvento = db.insert(GestorBD.TABLA_EVENTO, null, ev);
+
+        if (idEvento != -1) {
+            // 3. Insertar en TABLA_DIA (Relación fecha-evento)
+            // Usamos formato ISO (YYYY-MM-DD) para consistencia en búsquedas
+            String dateFormatted = String.format(Locale.getDefault(), "%04d-%02d-%02d", 
+                    date.getYear(), date.getMonth() + 1, date.getDay());
+            
+            ContentValues dv = new ContentValues();
+            dv.put(GestorBD.DIA_FECHA, dateFormatted);
+            dv.put(GestorBD.DIA_EMOCION, "Normal");
+            dv.put(GestorBD.DIA_ID_EVENTO, (int) idEvento);
+
+            if (db.insert(GestorBD.TABLA_DIA, null, dv) != -1) {
+                Toast.makeText(this, "Evento guardado con éxito", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Error al programar el día", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "Error al crear el evento", Toast.LENGTH_SHORT).show();
+        }
+        db.close();
     }
 
     /**

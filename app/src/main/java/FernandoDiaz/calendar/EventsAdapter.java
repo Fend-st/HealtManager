@@ -12,6 +12,10 @@ import com.example.healthmanager.R;
 
 import java.util.List;
 
+/**
+ * Adaptador para el RecyclerView que muestra la lista de eventos.
+ * Vincula los datos de la clase Event con los elementos de la interfaz de usuario.
+ */
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewHolder> {
 
     private List<Event> eventList;

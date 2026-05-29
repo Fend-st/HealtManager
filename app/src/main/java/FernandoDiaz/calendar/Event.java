@@ -4,10 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-/***
- * modelo de datos para los eventos
+/**
+ * Modelo de datos que representa un evento en el calendario.
+ * Esta clase implementa Parcelable para permitir que los objetos de tipo Event 
+ * se pasen entre componentes de la aplicación (como Fragments o Activities).
  */
-
 public class Event implements Parcelable {
     private String id;
     private String title;
