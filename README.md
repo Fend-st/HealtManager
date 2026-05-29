@@ -1,4 +1,4 @@
-# HEALTMANAGER - v1.1.0 LATEST
+# HEALTMANAGER - v1.2.0 LATEST
 note inglish : this repository belongs to a school project, it is not a real application
 
 ### miembros del grupo
