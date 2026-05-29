@@ -56,11 +56,12 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:indeterminate="false"
-            android:progressDrawable="@drawable/circular_progress"
-            android:max="3600"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/circular_progress"
+            android:max="120"
             android:progress="0"
-            android:rotation="-90" />
+            android:rotation="-90"
+            android:rotationX="49" />
 
         <!-- tiempo dentro de la barra circular  -->
         <LinearLayout

@@ -15,18 +15,14 @@
 
     <!-- Progreso -->
     <item android:id="@android:id/progress">
-        <rotate
-            android:fromDegrees="270"
-            android:pivotX="50%"
-            android:pivotY="50%"
-            android:toDegrees="270">
+        <clip>
             <shape
                 android:shape="ring"
-                android:useLevel="true"
+                android:useLevel="false"
                 android:thickness="14dp">
                 <solid android:color="#4F0FE9" />
             </shape>
-        </rotate>
+        </clip>
     </item>
 
 </layer-list>
