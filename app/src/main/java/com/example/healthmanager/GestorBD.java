@@ -493,7 +493,7 @@ public class GestorBD extends SQLiteOpenHelper {
         cur.close();
         db.close();
     }
-    //Nandus
+    // Nandus
     //METODO PARA REINICIAR EL TIEMPO DE LAS ACTIVIDADES CADA DIA:
     public void reiniciarSegundosActividades() {
         SQLiteDatabase db = this.getWritableDatabase();

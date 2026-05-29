@@ -41,7 +41,7 @@ public class Cronometro extends AppCompatActivity {
     protected ImageButton btnActivity1, btnActivity2, btnActivity3, btnActivity4, btnActivity5;
     protected Button btnActivity6, btnActivity7;
 
-    // Variables de control de la lógica del cronómetro
+    //  Variables de control de la lógica del cronómetro
     protected int posicion = 0;
     protected int progress = 0;
     protected boolean isPlaying = false;

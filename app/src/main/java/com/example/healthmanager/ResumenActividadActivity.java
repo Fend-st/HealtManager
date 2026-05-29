@@ -38,7 +38,7 @@ public class ResumenActividadActivity extends AppCompatActivity {
     protected ImageButton btnDeleteCaminar, btnDeleteCorrer, btnDeleteGimnasio, btnDeleteCiclismo, btnDeleteYoga;
     protected GestorBD gbd;
 
-    // Constante para el máximo de la barra (reducido a 1 hora para que sea apreciable en el vídeo explicativo)
+    // Constante  para el máximo de la barra (reducido a 1 hora para que sea apreciable en el vídeo explicativo)
     private static final int MAX_SEGUNDOS_BARRA = 3600;
 
     @Override

@@ -83,7 +83,7 @@
                         app:tint="#D32F2F" />
                 </LinearLayout>
 
-                <!-- CORRER -->
+                <!-- CORRER  -->
                 <TextView
                     android:id="@+id/tvCorrer_RA"
                     android:layout_width="match_parent"
