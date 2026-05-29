@@ -10,6 +10,10 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 //SISTEMA GESTOR DE LA BD DE LA APP HEALTH MANAGER
+
+/**
+ * @author Daniel
+ */
 public class GestorBD extends SQLiteOpenHelper {
 
     //Variables de la Base de Datos:
@@ -493,11 +497,17 @@ public class GestorBD extends SQLiteOpenHelper {
         cur.close();
         db.close();
     }
-    //Nandus
+    // Nandus
     //METODO PARA REINICIAR EL TIEMPO DE LAS ACTIVIDADES CADA DIA:
     public void reiniciarSegundosActividades() {
         SQLiteDatabase db = this.getWritableDatabase();
         // Esto pone a 0 la columna tiempo para todas las filas de la tabla
         db.execSQL("UPDATE " + TABLA_ACTIVIDAD + " SET " + ACTIVIDAD_TIEMPO + " = 0");
+    }
+
+    //METODO PARA REINICIAR UNA ACTIVIDAD ESPECIFICA:
+    public void reiniciarActividad(String nombreActividad) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE " + TABLA_ACTIVIDAD + " SET " + ACTIVIDAD_TIEMPO + " = 0 WHERE " + ACTIVIDAD_NOMBRE + " = ?", new String[]{nombreActividad});
     }
 }
