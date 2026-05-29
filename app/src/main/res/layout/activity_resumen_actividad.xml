@@ -65,7 +65,7 @@
                     android:max="18000"
                     android:progressDrawable="@drawable/barra_roja" />
 
-                <!-- CORRER -->
+                <!-- CORRER  -->
                 <TextView
                     android:id="@+id/tvCorrer_RA"
                     android:layout_width="match_parent"
