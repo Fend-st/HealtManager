@@ -1,4 +1,6 @@
 # HEALTMANAGER 
+note inglish : this repository belongs to a school project, it is not a real application
+
 ### miembros del grupo
 Dani Cabello<br>
 Jorge Carcia<br>
