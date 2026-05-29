@@ -17,7 +17,7 @@ import com.example.healthmanager.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 /**
- * Diálogo para la creación o edición de un evento individual.
+ * Mediador para la creación o edición de un evento individual.
  * Permite al usuario introducir un título y una descripción para una fecha específica.
  */
 public class EventDialogFragment extends DialogFragment {
@@ -36,10 +36,27 @@ public class EventDialogFragment extends DialogFragment {
     private EditText editTextDescription;
     private OnEventSavedListener listener;
 
+    /**
+     * Interfaz para notificar cuando un evento ha sido guardado.
+     */
     public interface OnEventSavedListener {
+        /**
+         * Se llama cuando el usuario pulsa en el botón de guardar.
+         *
+         * @param date        Fecha del evento.
+         * @param title       Título ingresado.
+         * @param description Descripción ingresada.
+         * @param eventId     ID del evento (null si es una creación nueva).
+         */
         void onEventSaved(CalendarDay date, String title, String description, @Nullable String eventId);
     }
 
+    /**
+     * Crea una instancia del diálogo para añadir un nuevo evento.
+     *
+     * @param date La fecha asociada.
+     * @return Fragmento de diálogo configurado.
+     */
     public static EventDialogFragment newInstance(CalendarDay date) {
         EventDialogFragment fragment = new EventDialogFragment();
         Bundle args = new Bundle();
@@ -48,6 +65,15 @@ public class EventDialogFragment extends DialogFragment {
         return fragment;
     }
 
+    /**
+     * Crea una instancia del diálogo para editar un evento existente.
+     *
+     * @param date        Fecha del evento.
+     * @param eventId     ID único del evento.
+     * @param title       Título actual.
+     * @param description Descripción actual.
+     * @return Fragmento de diálogo configurado para edición.
+     */
     public static EventDialogFragment newInstance(CalendarDay date, String eventId, String title, String description) {
         EventDialogFragment fragment = new EventDialogFragment();
         Bundle args = new Bundle();
@@ -59,10 +85,20 @@ public class EventDialogFragment extends DialogFragment {
         return fragment;
     }
 
+    /**
+     * Define el listener que recibirá el evento de guardado.
+     *
+     * @param listener Objeto que implementa {@link OnEventSavedListener}.
+     */
     public void setOnEventSavedListener(OnEventSavedListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Recupera los argumentos pasados al crear el fragmento.
+     *
+     * @param savedInstanceState Estado guardado anteriormente.
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +110,15 @@ public class EventDialogFragment extends DialogFragment {
         }
     }
 
+    /**
+     * Infla el diseño del diálogo e inicializa los componentes de la interfaz.
+     * Configura el comportamiento de los botones guardar y cancelar.
+     *
+     * @param inflater           Inflador de vistas.
+     * @param container          Contenedor padre.
+     * @param savedInstanceState Estado guardado.
+     * @return La vista del diálogo.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -113,6 +158,9 @@ public class EventDialogFragment extends DialogFragment {
         return view;
     }
 
+    /**
+     * Configura las dimensiones y fondo del diálogo al iniciarse.
+     */
     @Override
     public void onStart() {
         super.onStart();

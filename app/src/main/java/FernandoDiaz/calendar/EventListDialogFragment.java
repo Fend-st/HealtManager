@@ -25,7 +25,8 @@ import java.util.Locale;
 
 /**
  * Diálogo que muestra una lista de eventos para un día seleccionado.
- * Carga los datos reales de la base de datos GestorBD mediante una consulta JOIN manual.
+ * Carga los datos de la base de datos {@link GestorBD} mediante una consulta JOIN.
+ * @author Fernando diaz
  */
 public class EventListDialogFragment extends DialogFragment {
 
@@ -33,10 +34,24 @@ public class EventListDialogFragment extends DialogFragment {
     private CalendarDay selectedDate;
     private OnEventActionListener listener;
 
+    /**
+     * Interfaz para manejar acciones sobre los eventos de la lista.
+     */
     public interface OnEventActionListener {
+        /**
+         * Llamado cuando se solicita editar un evento.
+         *
+         * @param event El evento a editar.
+         */
         void onEditEvent(Event event);
     }
 
+    /**
+     * Crea una nueva instancia del diálogo para una fecha específica.
+     *
+     * @param date La fecha de la cual se mostrarán los eventos.
+     * @return Una nueva instancia de EventListDialogFragment.
+     */
     public static EventListDialogFragment newInstance(CalendarDay date) {
         EventListDialogFragment fragment = new EventListDialogFragment();
         Bundle args = new Bundle();
@@ -45,10 +60,20 @@ public class EventListDialogFragment extends DialogFragment {
         return fragment;
     }
 
+    /**
+     * Establece el listener para las acciones de eventos.
+     *
+     * @param listener El objeto que implementa OnEventActionListener.
+     */
     public void setOnEventActionListener(OnEventActionListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Inicializa el fragmento y recupera la fecha de los argumentos.
+     *
+     * @param savedInstanceState Estado guardado.
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +82,14 @@ public class EventListDialogFragment extends DialogFragment {
         }
     }
 
+    /**
+     * Crea y configura la vista del diálogo, incluyendo el RecyclerView y la carga de datos.
+     *
+     * @param inflater           Inflador para el diseño XML.
+     * @param container          Contenedor padre.
+     * @param savedInstanceState Estado guardado.
+     * @return La vista del diálogo configurada.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -89,7 +122,9 @@ public class EventListDialogFragment extends DialogFragment {
 
     /**
      * Consulta la base de datos para obtener los eventos asociados a la fecha seleccionada.
-     * Utiliza una consulta manual para evitar modificar GestorBD.
+     * Realiza un JOIN entre la tabla de eventos y la tabla de días.
+     *
+     * @return Una lista de objetos {@link Event} encontrados para la fecha.
      */
     private List<Event> loadEventsFromDatabase() {
         List<Event> events = new ArrayList<>();
@@ -122,6 +157,9 @@ public class EventListDialogFragment extends DialogFragment {
         return events;
     }
 
+    /**
+     * Configura el aspecto visual del diálogo al iniciarse (transparencia y ancho).
+     */
     @Override
     public void onStart() {
         super.onStart();

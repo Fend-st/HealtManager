@@ -40,15 +40,26 @@ import FernandoDiaz.crono.Cronometro;
 /**
  * Actividad principal del calendario que gestiona la visualización de días,
  * la selección de fechas y la apertura de diálogos para crear o listar eventos.
- * Implementa interfaces para reaccionar a la creación y edición de eventos.
+ * este es el controlador principal del modulo calendario.
+ * @author Fernando diaz
  */
 public class CalendarActivity extends AppCompatActivity implements 
         EventDialogFragment.OnEventSavedListener,
         EventListDialogFragment.OnEventActionListener {
 
+    /** Vista del calendario de la librería MaterialCalendarView. */
     private MaterialCalendarView calendarView;
+    /** Gestor de la base de datos para realizar operaciones CRUD.
+     * nota: el modulo calendario usa su propio objeto gestorBD
+     * esto no interfiere con otras operaciones, no borrar esta linea por error*/
+
     private GestorBD gbd;
 
+    /**
+     * Se llama al crear la actividad. Configura la interfaz, el calendario y la navegación.
+     *
+     * @param savedInstanceState Si la actividad se recrea, contiene los datos guardados.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +112,10 @@ public class CalendarActivity extends AppCompatActivity implements
         updateCalendarDecorators();
     }
 
+    /**
+     * Se ejecuta cuando la actividad vuelve a estar visible. 
+     * Refresca el estado de la navegación y los decoradores del calendario.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -111,6 +126,9 @@ public class CalendarActivity extends AppCompatActivity implements
         updateCalendarDecorators();
     }
 
+    /**
+     * Consulta la base de datos para obtener las fechas con eventos y actualiza los indicadores visuales.
+     */
     private void updateCalendarDecorators() {
         SQLiteDatabase db = gbd.getReadableDatabase();
         HashSet<CalendarDay> dates = new HashSet<>();
@@ -135,7 +153,12 @@ public class CalendarActivity extends AppCompatActivity implements
         calendarView.addDecorator(new EventDecorator(Color.parseColor("#FF4081"), dates));
     }
 
-    // muestra los popups de editar y crear evento
+    /**
+     * Muestra un menú emergente con las opciones de añadir evento o editar eventos existentes.
+     *
+     * @param view Vista de anclaje para el menú emergente.
+     * @param date Fecha seleccionada en el calendario.
+     */
     private void showPopupMenu(View view, CalendarDay date) {
         ContextThemeWrapper contextWrapper = new ContextThemeWrapper(this, R.style.CustomPopupMenu);
         PopupMenu popupMenu = new PopupMenu(contextWrapper, view);
@@ -159,12 +182,25 @@ public class CalendarActivity extends AppCompatActivity implements
         popupMenu.show();
     }
 
+    /**
+     * Abre el diálogo que muestra la lista de eventos para una fecha específica.
+     *
+     * @param date Fecha para la cual mostrar los eventos.
+     */
     private void showEventListDialog(CalendarDay date) {
         EventListDialogFragment listDialog = EventListDialogFragment.newInstance(date);
         listDialog.setOnEventActionListener(this);
         listDialog.show(getSupportFragmentManager(), "EventListDialogFragment");
     }
 
+    /**
+     * Abre el diálogo para crear o editar la información de un evento.
+     *
+     * @param date        Fecha del evento.
+     * @param eventId     Identificador del evento (null para nuevos).
+     * @param title       Título actual (null para nuevos).
+     * @param description Descripción actual (null para nuevos).
+     */
     private void showEventDialog(CalendarDay date, @Nullable String eventId, @Nullable String title, @Nullable String description) {
         EventDialogFragment dialog;
         if (title == null) {
@@ -176,6 +212,14 @@ public class CalendarActivity extends AppCompatActivity implements
         dialog.show(getSupportFragmentManager(), "EventDialogFragment");
     }
 
+    /**
+     * Método de callback invocado cuando se guarda un evento desde el diálogo.
+     *
+     * @param date        Fecha del evento.
+     * @param title       Título ingresado.
+     * @param description Descripción ingresada.
+     * @param eventId     ID del evento (null si es nuevo).
+     */
     @Override
     public void onEventSaved(CalendarDay date, String title, String description, @Nullable String eventId) {
         if (eventId == null) {
@@ -187,11 +231,23 @@ public class CalendarActivity extends AppCompatActivity implements
         updateCalendarDecorators();
     }
 
+    /**
+     * Método de callback invocado desde el diálogo de lista para editar un evento seleccionado.
+     *
+     * @param event Objeto de tipo Event que se desea editar.
+     */
     @Override
     public void onEditEvent(Event event) {
         showEventDialog(calendarView.getSelectedDate(), event.getId(), event.getTitle(), event.getDescription());
     }
 
+    /**
+     * Inserta un nuevo evento en la base de datos para la fecha proporcionada.
+     *
+     * @param date        Fecha del evento.
+     * @param title       Título del evento.
+     * @param description Descripción del evento.
+     */
     private void saveEventToDatabase(CalendarDay date, String title, String description) {
         SQLiteDatabase db = gbd.getWritableDatabase();
         
@@ -236,6 +292,13 @@ public class CalendarActivity extends AppCompatActivity implements
         db.close();
     }
 
+    /**
+     * Actualiza un evento existente en la base de datos.
+     *
+     * @param eventId     Identificador único del evento.
+     * @param title       Nuevo título.
+     * @param description Nueva descripción.
+     */
     private void updateEventInDatabase(String eventId, String title, String description) {
         SQLiteDatabase db = gbd.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -252,22 +315,41 @@ public class CalendarActivity extends AppCompatActivity implements
     }
 
     /**
-     * Decorador para mostrar puntos en los días con eventos.
+     * Clase decoradora para añadir indicadores visuales (puntos) a días específicos en el calendario.
      */
     private static class EventDecorator implements DayViewDecorator {
+        /** Color del punto indicador. */
         private final int color;
+        /** Conjunto de fechas que deben ser decoradas. */
         private final HashSet<CalendarDay> dates;
 
+        /**
+         * Constructor del decorador.
+         *
+         * @param color Color del indicador.
+         * @param dates Fechas con eventos.
+         */
         public EventDecorator(int color, HashSet<CalendarDay> dates) {
             this.color = color;
             this.dates = dates;
         }
 
+        /**
+         * Determina si un día dado debe ser decorado.
+         *
+         * @param day Día a evaluar.
+         * @return true si el día está en el conjunto de fechas, false en caso contrario.
+         */
         @Override
         public boolean shouldDecorate(CalendarDay day) {
             return dates.contains(day);
         }
 
+        /**
+         * Aplica la decoración a la celda del día.
+         *
+         * @param view Facade para configurar la apariencia.
+         */
         @Override
         public void decorate(DayViewFacade view) {
             view.addSpan(new DotSpan(8, color));
