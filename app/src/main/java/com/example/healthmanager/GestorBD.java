@@ -10,6 +10,10 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 //SISTEMA GESTOR DE LA BD DE LA APP HEALTH MANAGER
+
+/**
+ * @author Daniel
+ */
 public class GestorBD extends SQLiteOpenHelper {
 
     //Variables de la Base de Datos:

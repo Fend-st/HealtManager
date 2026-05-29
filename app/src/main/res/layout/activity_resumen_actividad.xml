@@ -55,33 +55,15 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
+                <ProgressBar
+                    android:id="@+id/progressCaminar_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:layout_height="24dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="20dp">
-
-                    <ProgressBar
-                        android:id="@+id/progressCaminar_RA"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="24dp"
-                        android:max="3600"
-                        android:progressDrawable="@drawable/barra_roja" />
-
-                    <ImageButton
-                        android:id="@+id/btnDeleteCaminar"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Reiniciar Caminar"
-                        android:src="@android:drawable/ic_menu_delete"
-                        app:tint="#D32F2F" />
-                </LinearLayout>
+                    android:layout_marginBottom="20dp"
+                    android:max="18000"
+                    android:progressDrawable="@drawable/barra_roja" />
 
                 <!-- CORRER -->
                 <TextView
@@ -93,33 +75,15 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
+                <ProgressBar
+                    android:id="@+id/progressCorrer_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:layout_height="24dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="20dp">
-
-                    <ProgressBar
-                        android:id="@+id/progressCorrer_RA"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="24dp"
-                        android:max="3600"
-                        android:progressDrawable="@drawable/barra_morada" />
-
-                    <ImageButton
-                        android:id="@+id/btnDeleteCorrer"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Reiniciar Correr"
-                        android:src="@android:drawable/ic_menu_delete"
-                        app:tint="#D32F2F" />
-                </LinearLayout>
+                    android:layout_marginBottom="20dp"
+                    android:max="18000"
+                    android:progressDrawable="@drawable/barra_morada" />
 
                 <!-- GIMNASIO -->
                 <TextView
@@ -131,33 +95,15 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
+                <ProgressBar
+                    android:id="@+id/progressGimnasio_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:layout_height="24dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="20dp">
-
-                    <ProgressBar
-                        android:id="@+id/progressGimnasio_RA"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="24dp"
-                        android:max="3600"
-                        android:progressDrawable="@drawable/barra_amarilla" />
-
-                    <ImageButton
-                        android:id="@+id/btnDeleteGimnasio"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Reiniciar Gimnasio"
-                        android:src="@android:drawable/ic_menu_delete"
-                        app:tint="#D32F2F" />
-                </LinearLayout>
+                    android:layout_marginBottom="20dp"
+                    android:max="18000"
+                    android:progressDrawable="@drawable/barra_amarilla" />
 
                 <!-- CICLISMO -->
                 <TextView
@@ -169,33 +115,15 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
+                <ProgressBar
+                    android:id="@+id/progressCiclismo_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:layout_height="24dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="20dp">
-
-                    <ProgressBar
-                        android:id="@+id/progressCiclismo_RA"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="24dp"
-                        android:max="3600"
-                        android:progressDrawable="@drawable/barra_naranja" />
-
-                    <ImageButton
-                        android:id="@+id/btnDeleteCiclismo"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Reiniciar Ciclismo"
-                        android:src="@android:drawable/ic_menu_delete"
-                        app:tint="#D32F2F" />
-                </LinearLayout>
+                    android:layout_marginBottom="20dp"
+                    android:max="18000"
+                    android:progressDrawable="@drawable/barra_naranja" />
 
                 <!-- YOGA -->
                 <TextView
@@ -207,33 +135,15 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
+                <ProgressBar
+                    android:id="@+id/progressYoga_RA"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:layout_height="24dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="10dp">
-
-                    <ProgressBar
-                        android:id="@+id/progressYoga_RA"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="24dp"
-                        android:max="3600"
-                        android:progressDrawable="@drawable/barra_cian" />
-
-                    <ImageButton
-                        android:id="@+id/btnDeleteYoga"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Reiniciar Yoga"
-                        android:src="@android:drawable/ic_menu_delete"
-                        app:tint="#D32F2F" />
-                </LinearLayout>
+                    android:layout_marginBottom="10dp"
+                    android:max="18000"
+                    android:progressDrawable="@drawable/barra_cian" />
 
             </LinearLayout>
 
