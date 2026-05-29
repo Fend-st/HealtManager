@@ -10,6 +10,10 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 //SISTEMA GESTOR DE LA BD DE LA APP HEALTH MANAGER
+
+/***
+ * author dani
+ */
 public class GestorBD extends SQLiteOpenHelper {
 
     //Variables de la Base de Datos:
@@ -252,46 +256,6 @@ public class GestorBD extends SQLiteOpenHelper {
         return curUsuario;
     }
 
-
-    /*
-      CÓDIGO PENDIENTE DE INTEGRAR EN EL DASHBOARD!
-
-      //Inicializar TextViews o similar:
-      TextView tvNombre = findViewById(R.id.tvNombre);
-      TextView tvPeso = findViewById(R.id.tvPeso);
-      TextView tvAltura = findViewById(R.id.tvAltura);
-      TextView tvIMC = findViewById(R.id.tvIMC);
-
-      //Obtener y mostrar los datos del usuario:
-      Cursor curUsuario = gbd.obtenerUsuario();
-      if (curUsuario !=null && curUsuario.moveToFirst()) {
-          String nombre = curUsuario.getString(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_NOMBRE));
-          double peso = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_PESO));
-          double altura = curUsuario.getDouble(curUsuario.getColumnIndexOrThrow(GestorBD.USUARIO_ALTURA));
-          double alturaEnMetros = altura / 100;
-          double imc = peso / (alturaEnMetros * alturaEnMetros);
-
-          //Actualizar TextViews o similar con los datos del usuario:
-          tvNombre.setText("Nombre: " + nombre);
-          tvPeso.setText("Peso: " + peso + " kg");
-          tvAltura.setText("Altura: " + altura + " cm");
-          tvIMC.setText("IMC: " + String.format("%.2f", imc));
-      } else {
-          //Si no hay datos poner texto por defecto
-          tvNombre.setText("Nombre: Sin datos");
-          tvPeso.setText("Peso: Sin datos");
-          tvAltura.setText("Altura: Sin datos");
-          tvIMC.setText("IMC: Sin datos");
-      }
-    //Cerramos Cursor solo si NO es null para evitar NullPointerException
-    if (curUsuario !=null) {
-        curUsuario.close();
-    }
-      }
-   */
-
-
-
     //METODO PARA OBTENER LOS DATOS DEL EVENTO DE LA TABLA_EVENTO:
     public Cursor obtenerEvento() {
         //Abrimos la BD en modo lectura
@@ -301,42 +265,6 @@ public class GestorBD extends SQLiteOpenHelper {
         Cursor curEvento = db.rawQuery("SELECT * FROM " + TABLA_EVENTO, null);
         return curEvento;
     }
-
-    /*
-    //CÓDIGO PARA INTEGRAR EN LA ACTIVITY!
-
-    //Inicializar TextViews o similares para mostrar los datos:
-    TextView tvEventoNombre = findViewById(R.id.tvEventoNombre);
-    TextView tvEventoDescripcion = findViewById(R.id.tvEventoDescripcion);
-    TextView tvEventoRepite = findViewById(R.id.tvEventoRepite);
-    TextView tvEventoIdUsuario = findViewById(R.id.tvEventoIdUsuario);
-
-    //Obtener y mostrar los datos del evento
-    GestorBD gbd = new GestorBD(this);
-    Cursor curEvento = gbd.obtenerEvento();
-    if(curEvento !=null && curEvento.moveToFirst()) {
-        String nombre = curEvento.getString(curEvento.getColumnIndexOrThrow(GestorBD.EVENTO_NOMBRE));
-        String descripcion = curEvento.getString(curEvento.getColumnIndexOrThrow(GestorBD.EVENTO_DESCRIPCION));
-        int repite = curEvento.getInt(curEvento.getColumnIndexOrThrow(GestorBD.EVENTO_REPITE));
-        int idUsuario = curEvento.getInt(curEvento.getColumnIndexOrThrow(GestorBD.EVENTO_ID_USUARIO));
-
-        //Mostrar los datos en TextView o similar
-        tvEventoNombre.setText("Evento: " + nombre);
-        tvEventoDescripcion.setText("Descripción: " + descripcion);
-        tvEventoRepite.setText("Repite: " + (repite == 1 ? "Sí" : "No")); //Si se repite, se muestra "Sí", si no, "No"
-        tvEventoIdUsuario.setText("ID Usuario: " + idUsuario);
-    } else {
-        //Si no hay datos poner texto por defecto
-        tvEventoNombre.setText("Evento: Sin datos");
-        tvEventoDescripcion.setText("Descripción: Sin datos");
-        tvEventoRepite.setText("Repite: Sin datos");
-    }
-    //Cerramos Cursor solo si NO es null para evitar NullPointerException
-    if (curEvento !=null) {
-        curEvento.close();
-    }
-     */
-
 
     //METODO PARA OBTENER LOS DATOS DEL DIA DE LA TABLA_DIA:
     public Cursor obtenerDia() {
@@ -348,36 +276,6 @@ public class GestorBD extends SQLiteOpenHelper {
         return curDia;
     }
 
-/*
-
-    //CODIGO PARA INTEGRAR EN LA ACTIVITY
-
-    //Inicializar TextViews o similares para mostrar los datos:
-    TextView tvDiaFecha = findViewById(R.id.tvDiaFecha);
-    TextView tvDiaEmocion = findViewById(R.id.tvDiaEmocion);
-
-    //Obtener y mostrar los datos del dia
-    GestorBD gbd = new GestorBD(this);
-    Cursor curDia = gbd.obtenerDia();
-    if (curDia !=null && curDia.moveToFirst()) {
-        String fecha = curDia.getString(curDia.getColumnIndexOrThrow(GestorBD.DIA_FECHA));
-        String emocion = curDia.getString(curDia.getColumnIndexOrThrow(GestorBD.DIA_EMOCION));
-
-        //Mostrar los datos en TextView o similar
-        tvDiaFecha.setText("Fecha: " + fecha);
-        tvDiaEmocion.setText("Emocion: " + emocion);
-    } else {
-        //Si no hay datos poner texto por defecto
-        tvDiaFecha.setText("Fecha: Sin datos");
-        tvDiaEmocion.setText("Emoción: Sin datos");
-    }
-    //Cerramos Cursor solo si NO es null para evitar NullPointerException
-    if (curDia !=null) {
-        curDia.close();
-    }
-*/
-
-
     //METODO PARA OBTENER LOS DATOS DE UNA ACTIVIDAD DE LA TABLA_ACTIVIDAD:
     public Cursor obtenerActividad() {
         //Abrimos la BD en modo lectura
@@ -387,46 +285,6 @@ public class GestorBD extends SQLiteOpenHelper {
         Cursor curActividad = db.rawQuery("SELECT * FROM " + TABLA_ACTIVIDAD, null);
         return curActividad;
     }
-
-/*
-
-    //CODIGO PARA INTEGRAR EN LA ACTIVITY
-
-    //Inicializar TextViews o similares para mostrar los datos:
-    TextView tvActividadNombre = findViewById(R.id.tvActividadNombre);
-    TextView tvActividadTiempo = findViewById(R.id.tvActividadTiempo);
-    TextView tvActividadFecha = findViewById(R.id.tvActividadFecha);
-
-    //Obtener y mostrar los datos de la actividad
-    GestorBD gbd = new GestorBD(this);
-    Cursor curActividad = gbd.obtenerActividad();
-
-    if (curActividad != null && curActividad.moveToFirst()) {
-        String nombre = curActividad.getString(curActividad.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_NOMBRE));
-        String tiempo = curActividad.getString(curActividad.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_TIEMPO));
-        String fecha = curActividad.getString(curActividad.getColumnIndexOrThrow(GestorBD.ACTIVIDAD_FECHA));
-
-        //Mostrar los datos en TextView o similar
-        tvActividadNombre.setText("Actividad: " + nombre);
-        tvActividadTiempo.setText("Tiempo: " + tiempo);
-        tvActividadFecha.setText("Fecha: " + fecha);
-    } else {
-        //Si no hay datos poner texto por defecto
-        tvActividadNombre.setText("Actividad: Sin datos");
-        tvActividadTiempo.setText("Tiempo: Sin datos");
-        tvActividadFecha.setText("Fecha: Sin datos");
-        tvActividadIdUsuario.setText("ID Usuario: Sin datos");
-    }
-    //Cerramos Cursor solo si NO es null para evitar NullPointerException
-    if (curActividad != null) {
-        curActividad.close();
-    }
-*/
-
-
-
-
-
 
     // ------------------ METODOS DE PRUEBA PARA MOSTRAR DATOS POR CONSOLA --------------------
 
@@ -499,11 +357,5 @@ public class GestorBD extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         // Esto pone a 0 la columna tiempo para todas las filas de la tabla
         db.execSQL("UPDATE " + TABLA_ACTIVIDAD + " SET " + ACTIVIDAD_TIEMPO + " = 0");
-    }
-
-    //METODO PARA REINICIAR UNA ACTIVIDAD ESPECIFICA:
-    public void reiniciarActividad(String nombreActividad) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("UPDATE " + TABLA_ACTIVIDAD + " SET " + ACTIVIDAD_TIEMPO + " = 0 WHERE " + ACTIVIDAD_NOMBRE + " = ?", new String[]{nombreActividad});
     }
 }

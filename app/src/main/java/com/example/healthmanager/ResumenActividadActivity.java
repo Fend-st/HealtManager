@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -26,71 +25,52 @@ import java.util.Locale;
 import FernandoDiaz.calendar.CalendarActivity;
 import FernandoDiaz.crono.Cronometro;
 
-/**
- * Clase encargada de gestionar la pantalla de Resumen de Actividad.
- * En esta actividad se visualizan los progresos diarios del usuario mediante barras de progreso animadas.
- */
 public class ResumenActividadActivity extends AppCompatActivity {
 
-    // Referencias a los componentes de la interfaz de usuario
     protected TextView tvCaminar_RA, tvCorrer_RA, tvGimnasio_RA, tvCiclismo_RA, tvYoga_RA;
     protected ProgressBar progressCaminar_RA, progressCorrer_RA, progressGimnasio_RA, progressCiclismo_RA, progressYoga_RA;
-    protected ImageButton btnDeleteCaminar, btnDeleteCorrer, btnDeleteGimnasio, btnDeleteCiclismo, btnDeleteYoga;
     protected GestorBD gbd;
 
-    // Constante para el máximo de la barra (reducido a 1 hora para que sea apreciable en el vídeo explicativo)
-    private static final int MAX_SEGUNDOS_BARRA = 3600;
+    // Constante para el máximo de 24 horas en segundos
+    private static final int SEGUNDOS_24H = 86400;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Habilitamos el diseño EdgeToEdge para una experiencia más inmersiva
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_resumen_actividad);
 
-        // Ajustamos los paddings para que el contenido no quede oculto tras las barras del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // 1. Inicializamos las referencias de las vistas
+        // 1. Inicializar vistas
         inicializarVistas();
 
-        // 2. Instanciamos el gestor de la base de datos local
+        // 2. Instanciar BD
         gbd = new GestorBD(this);
 
-        // 3. Verificamos si es un nuevo día para resetear los contadores
+        // 3. Comprobar si hay que poner a 0 (reinicio diario)
         comprobarReinicioDiario();
 
-        // 4. Cargamos los datos almacenados en la base de datos
+        // 4. Cargar los segundos actuales de la BD
         cargarDatosActividad();
 
-        // 5. Configuramos los eventos de clic para los botones de reinicio individual
-        configurarBotonesBorrado();
-
-        // 6. Configuramos la lógica de navegación inferior
+        // 5. Configurar la barra de navegación
         configurarNavegacion();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Aseguramos que el ítem del resumen esté seleccionado al volver a esta actividad
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         if (bottomNavigationView != null) {
             bottomNavigationView.setSelectedItemId(R.id.nav_summary);
         }
-
-        // Refrescamos los datos por si se ha registrado actividad nueva desde el cronómetro
-        comprobarReinicioDiario();
-        cargarDatosActividad();
     }
 
-    /**
-     * Método para enlazar las variables Java con los elementos del layout XML.
-     */
     private void inicializarVistas() {
         tvCaminar_RA = findViewById(R.id.tvCaminar_RA);
         tvCorrer_RA = findViewById(R.id.tvCorrer_RA);
@@ -104,45 +84,18 @@ public class ResumenActividadActivity extends AppCompatActivity {
         progressCiclismo_RA = findViewById(R.id.progressCiclismo_RA);
         progressYoga_RA = findViewById(R.id.progressYoga_RA);
 
-        // Establecemos el valor máximo de las barras basándonos en nuestra constante
-        progressCaminar_RA.setMax(MAX_SEGUNDOS_BARRA);
-        progressCorrer_RA.setMax(MAX_SEGUNDOS_BARRA);
-        progressGimnasio_RA.setMax(MAX_SEGUNDOS_BARRA);
-        progressCiclismo_RA.setMax(MAX_SEGUNDOS_BARRA);
-        progressYoga_RA.setMax(MAX_SEGUNDOS_BARRA);
-
-        btnDeleteCaminar = findViewById(R.id.btnDeleteCaminar);
-        btnDeleteCorrer = findViewById(R.id.btnDeleteCorrer);
-        btnDeleteGimnasio = findViewById(R.id.btnDeleteGimnasio);
-        btnDeleteCiclismo = findViewById(R.id.btnDeleteCiclismo);
-        btnDeleteYoga = findViewById(R.id.btnDeleteYoga);
+        // Aseguramos que el máximo sea 24 horas (86400 segundos)
+        progressCaminar_RA.setMax(SEGUNDOS_24H);
+        progressCorrer_RA.setMax(SEGUNDOS_24H);
+        progressGimnasio_RA.setMax(SEGUNDOS_24H);
+        progressCiclismo_RA.setMax(SEGUNDOS_24H);
+        progressYoga_RA.setMax(SEGUNDOS_24H);
     }
 
-    /**
-     * Configura los listeners para los botones de papelera, permitiendo borrar el tiempo de una actividad.
-     */
-    private void configurarBotonesBorrado() {
-        btnDeleteCaminar.setOnClickListener(v -> reiniciarYRefrescar("Caminar"));
-        btnDeleteCorrer.setOnClickListener(v -> reiniciarYRefrescar("Correr"));
-        btnDeleteGimnasio.setOnClickListener(v -> reiniciarYRefrescar("Gimnasio"));
-        btnDeleteCiclismo.setOnClickListener(v -> reiniciarYRefrescar("Ciclismo"));
-        btnDeleteYoga.setOnClickListener(v -> reiniciarYRefrescar("Yoga"));
-    }
-
-    /**
-     * Reinicia en la base de datos la actividad seleccionada y actualiza la vista.
-     */
-    private void reiniciarYRefrescar(String actividad) {
-        gbd.reiniciarActividad(actividad);
-        cargarDatosActividad();
-    }
-
-    /**
-     * Define el comportamiento de los ítems del menú de navegación inferior.
-     */
     private void configurarNavegacion() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+        // Marcamos que estamos en la pestaña de Resumen
         bottomNavigationView.setSelectedItemId(R.id.nav_summary);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -167,16 +120,12 @@ public class ResumenActividadActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.nav_summary) {
-                return true; 
+                return true; // Ya estamos aquí
             }
             return false;
         });
     }
 
-    /**
-     * Comprueba mediante SharedPreferences si la fecha actual difiere de la última registrada
-     * para reiniciar los contadores de actividad automáticamente al cambiar de día.
-     */
     private void comprobarReinicioDiario() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String fechaHoy = sdf.format(new Date());
@@ -190,9 +139,6 @@ public class ResumenActividadActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Obtiene los datos de la base de datos, procesa el tiempo total por actividad y los muestra.
-     */
     private void cargarDatosActividad() {
         Cursor cursor = gbd.obtenerActividad();
 
@@ -226,10 +172,6 @@ public class ResumenActividadActivity extends AppCompatActivity {
         actualizarVistaActividad(tvYoga_RA, progressYoga_RA, "Yoga", segundosYoga);
     }
 
-    /**
-     * Actualiza el texto del tiempo y anima la barra de progreso de cada actividad.
-     * Se utiliza ObjectAnimator para lograr una transición visual suave.
-     */
     private void actualizarVistaActividad(TextView textView, ProgressBar progressBar, String etiqueta, int segundosTotales) {
         int h = segundosTotales / 3600;
         int m = (segundosTotales % 3600) / 60;
@@ -244,9 +186,6 @@ public class ResumenActividadActivity extends AppCompatActivity {
         animation.start();
     }
 
-    /**
-     * Método de utilidad para convertir el formato HH:MM:SS almacenado en la BD a segundos totales.
-     */
     private int convertirHHMMSSaSegundos(String tiempo) {
         try {
             if (tiempo == null || tiempo.isEmpty() || tiempo.equals("0")) return 0;
